@@ -8,6 +8,10 @@ function f() {
   }
   console.log(a);
 }
+/**
+ * a will be changed to 7 in the conditional block;
+ * Output 7
+ */
 
 // 2. When executed, what value will be output?
 function f() {
@@ -16,6 +20,10 @@ function f() {
   }
   console.log(a);
 }
+/**
+ * var has function scope. a is always 5
+ * Output 5
+ */
 
 // 3. When executed, what value will be output?
 function f() {
@@ -23,6 +31,10 @@ function f() {
 }
 f();
 console.log(a);
+/**
+ * a is given value is function f(). After executing f(), a is 3
+ * Output 3
+ */
 
 // 4.
 var a = 5;
@@ -35,6 +47,10 @@ function second() {
 }
 first();
 second();
+/**
+ * After executing first(), a is 6.
+ * Output 6
+ */
 
 // 5.
 var a = 5;
@@ -42,6 +58,10 @@ function f() {
   var a = 7;
   console.log(a);
 }
+/**
+ * a in 'console.log(a)' is a new variable declared in function f, not the globel variable.
+ * Output 7
+ */
 
 // 6.
 var a = 1;
@@ -52,3 +72,8 @@ function b() {
 }
 b();
 console.log(a);
+/**
+ * function b() has return statement, so it can only modify globel variable's value in its own scope.
+ * Globel variable a is still 1 outside of the function b();
+ * Output 1
+ */
