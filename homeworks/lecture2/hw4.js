@@ -73,7 +73,7 @@ function b() {
 b();
 console.log(a);
 /**
- * function b() has return statement, so it can only modify globel variable's value in its own scope.
- * Globel variable a is still 1 outside of the function b();
+ * a in function b() is the function below return statement, which will never execute in this function.
+ * Globel variable a is still 1 after executing function b();
  * Output 1
  */
