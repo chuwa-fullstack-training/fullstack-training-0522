@@ -4,7 +4,6 @@
 * This function does not handle getters and setters or copy attributes.
 */
 function extend(o, p) {
-    // implement your code here
     let check = false;
     for(let i = 0; i < p.length; i++){
         for(let pos = 0; pos < o.length; pos++){
@@ -26,7 +25,6 @@ function extend(o, p) {
 * If o and p have properties by the same name, the values from o are used.
 */
 function union(o, p) {
-    // implement your code here
     var nums = new Array();
     for (let pos = 0; pos < o.length; pos++){
         nums.push(o[pos]);
@@ -50,7 +48,6 @@ function union(o, p) {
 * Return o.
 */
 function restrict(o, p) {
-    // implement your code here
     let pos = 0;
     while(pos < o.length){
         for(let i = 0; i < p.length; i++){
@@ -79,5 +76,4 @@ function intersection(o, p) {
         }
     }
     return nums;
-    // implement your code here
 }
