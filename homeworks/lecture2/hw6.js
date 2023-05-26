@@ -4,11 +4,17 @@
 function largestElement(list) {
   let maxNumber = -Infinity;
   for (let i of list) {
-    maxNumber = Math.max(maxNumber, i);
+    if (typeof i === "number") {
+      maxNumber = Math.max(maxNumber, i);
+    }
   }
-  return maxNumber;
+  return maxNumber === -Infinity ? null : maxNumber;
 }
 console.log(largestElement([1, 2, 5, 9, 0, 30, 14, 17]));
+console.log(largestElement([-11, -2, -5, -9, -30, -14, -17]));
+console.log(largestElement([]));
+console.log(largestElement(["a", "4", null]));
+console.log(largestElement([2, undefined, 5, "7"]));
 
 // 2. Write function that reverses a list, preferably in place.
 function reverseList(list) {
@@ -22,6 +28,7 @@ function reverseList(list) {
 }
 console.log(reverseList([1, 2, 3, 4, 5, 6]));
 console.log(reverseList([1, 2, 3, 4, 5]));
+console.log(reverseList([]));
 
 // 3. Write a function that checks whether an element occurs at least twice in a list.
 function checkTwice(list, element) {
@@ -34,5 +41,5 @@ function checkTwice(list, element) {
   return count >= 2;
 }
 console.log(checkTwice([1, 1, 2, 3, 4, 5, 5], 1));
-console.log(checkTwice([1, 2, 5, 3, 4, 5, 5, 5], 5));
+console.log(checkTwice([1, 2, 5, 3, 4, "5", "5", "5"], "5"));
 console.log(checkTwice([1, 2, 3], 3));

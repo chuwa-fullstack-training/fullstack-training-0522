@@ -8,6 +8,7 @@ function f() {
   }
   console.log(a); // 7
 }
+f();
 
 // 2. When executed, what value will be output?
 function f() {
@@ -16,7 +17,7 @@ function f() {
   }
   console.log(a); // 5
 }
-
+f();
 
 // 3. When executed, what value will be output?
 function f() {
@@ -53,6 +54,6 @@ function b() {
 }
 b();
 console.log(a); // 1
-//since function are hoisted to top of scope, so function a(){} first declared, 
+//since function are hoisted to top of scope, so function a(){} first declared,
 //and then a=10 change the local variable a, but not the global variable var a=1,
 //so out of scope of function b, a = 1.
