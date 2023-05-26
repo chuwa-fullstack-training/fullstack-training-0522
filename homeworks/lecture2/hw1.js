@@ -5,6 +5,20 @@
 */
 function extend(o, p) {
     // implement your code here
+    let check = false;
+    for(let i = 0; i < p.length; i++){
+        for(let pos = 0; pos < o.length; pos++){
+            if(o[pos].name === p[i].name){
+                o[pos] = p[i];
+                check = true;
+                break;
+            }
+        }
+        if(check == false){
+            o.push(p[i]);
+        }
+        check = false;
+    }
 }
 
 /*
@@ -13,6 +27,22 @@ function extend(o, p) {
 */
 function union(o, p) {
     // implement your code here
+    var nums = new Array();
+    for (let pos = 0; pos < o.length; pos++){
+        nums.push(o[pos]);
+        let i = 0;
+        while(i < p.length){
+            if(o[pos].name === p[i].name){
+                p.splice(i, 1);
+            }else{
+                i++;
+            }
+        }
+    }
+    for(let i = 0; i < p.length; i++){
+        nums.push(p[i]);
+    }
+    return nums;
 }
 
 /*
@@ -21,6 +51,17 @@ function union(o, p) {
 */
 function restrict(o, p) {
     // implement your code here
+    let pos = 0;
+    while(pos < o.length){
+        for(let i = 0; i < p.length; i++){
+            if(o[pos].name === p[i].name){
+                o.splice(pos, 1);
+            }else{
+                pos++;
+            }
+        }
+    }
+    return o;
 }
 
 /*
@@ -29,5 +70,14 @@ function restrict(o, p) {
 * the properties in p are discarded
 */
 function intersection(o, p) {
+    var nums = new Array();
+    for (let pos = 0; pos < o.length; pos++){
+        for(let i = 0; i < p.length; i++){
+            if(o[pos].name === p[i].name){
+                nums.push(o[pos]);
+            }
+        }
+    }
+    return nums;
     // implement your code here
 }
