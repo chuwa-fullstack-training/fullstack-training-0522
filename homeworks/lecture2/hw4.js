@@ -52,15 +52,6 @@ function b() {
   function a() {}
 }
 b();
-console.log(a); // 10
-// 6.
-var a = 1;
-function b() {
-  a = 10;
-  return;
-  function a() {}
-}
-b();
 console.log(a); // 1
 //since function are hoisted to top of scope, so function a(){} first declared, 
 //and then a=10 change the local variable a, but not the global variable var a=1,
