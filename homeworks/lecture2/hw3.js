@@ -22,7 +22,7 @@ console.log("0 || 1 = "+(0 || 1));
 console.log("1 || 2 = "+(1 || 2));
 
 console.log("0 && 1 = "+(0 && 1));
-
+// 如果前一个是true， 就返回后面的值
 console.log("1 && 2 = "+(1 && 2));
 
 console.log(false == '0')
