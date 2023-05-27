@@ -5,7 +5,13 @@
 */
 function extend(o, p) {
     // implement your code here
+    for (let prop in p) {
+        // o.prop = p.prop;     // o.prop is not working, because prop will treat as a string
+        o[prop] = p[prop];
+    }
+    return o;
 }
+
 
 /*
 * Return a new object that holds the properties of both o and p.
@@ -13,7 +19,19 @@ function extend(o, p) {
 */
 function union(o, p) {
     // implement your code here
+    let result = {};     
+
+    for(let prop in p) {  
+        result[prop] = p[prop];
+    }
+    
+    for(let prop in o) { 
+        result[prop] = o[prop];
+    }
+    
+    return result;     
 }
+
 
 /*
 * Remove properties from o if there is not a property with the same name in p.
@@ -21,7 +39,14 @@ function union(o, p) {
 */
 function restrict(o, p) {
     // implement your code here
+    for(let prop in o) {
+        if(!p.hasOwnProperty(prop)) {
+            delete o[prop];
+        }
+    }
+    return o;
 }
+
 
 /*
 * Return a new object that holds only the properties of o that also appear
@@ -30,4 +55,11 @@ function restrict(o, p) {
 */
 function intersection(o, p) {
     // implement your code here
+    let result = {};
+    for(let prop in 0) {
+        if(p.hasOwnProperty(prop)) {
+            result[prop] = o[prop];
+        }
+    }
+    return result;
 }
