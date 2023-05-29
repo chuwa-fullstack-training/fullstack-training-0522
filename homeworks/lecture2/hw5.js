@@ -14,7 +14,7 @@ if (x !== 3) {
 if (x === 3) {
   console.log(y);
 }
-
+//answer: 
 //undefined
 //5
 //5
@@ -27,6 +27,7 @@ if (x === 3) {
 }
 console.log(x);
 
+//answer: 
 //2
 //2
 
