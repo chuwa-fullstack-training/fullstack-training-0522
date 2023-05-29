@@ -73,3 +73,4 @@ console.log(circleInstance.circumference());
 // circle
 // circle
 // 3.141592653589793
+// 6.283185307179586
