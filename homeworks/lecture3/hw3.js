@@ -2,15 +2,12 @@ function counter(val) {
     // implement here
     let ans = 0;
 
-
-    if(arguments.length==0) return ans;
-        else{
-            ans+=val;
-
-        }
+    return function(val){
+        if(arguments.length!=0) ans+=val;
+        return ans;
+    }
 
 
-    return ans;
 }
 
 let count = counter();
