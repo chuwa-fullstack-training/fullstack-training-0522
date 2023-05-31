@@ -18,23 +18,21 @@ Triangle.prototype.constructor = Triangle;
 
 // your code goes here
 // 1. implement a method getPerimeter for Triangle class
-function getPerimeter() {
+Triangle.prototype.getPerimeter = function() {
     let a = this.a || NaN;
     let b = this.b || NaN;
     let c = this.c || NaN;
     return a + b + c;
-}
-Triangle.prototype.getPerimeter = getPerimeter();
+};
 
 // 2. implement a method getArea for Triangle class
-function getArea() {
+Triangle.prototype.getArea = function() {
     let a = this.a || NaN;
     let b = this.b || NaN;
     let c = this.c || NaN;
     let sP = (a + b + c) / 2;
     return sP != NaN ? Math.sqrt(sP * (sP - a) * (sP - b) * (sP - c)) : NaN;
-}
-Triangle.prototype.getArea = getArea();
+};
 
 // 3. implement a new class Circle. this class should inherit from Shape class, and have a radius property.
 function Circle(radius) {
@@ -45,16 +43,14 @@ Circle.prototype = Object.create(Shape.prototype);
 Circle.prototype.constructor = Circle;
 
 // 4. implement a method area for Circle class
-function getArea() {
+Circle.prototype.getArea = function() {
     return Math.PI * Math.pow(this.radius, 2);
-}
-Circle.prototype.getArea = getArea();
+};
 
 // 5. implement a method circumference for Circle class
-function getCircumference() {
+Circle.prototype.getCircumference = function() {
     return this.radius * 2 * Math.PI;
-}
-Circle.prototype.getCircumference = getCircumference();
+};
 
 // 6. change all code above to use ES6 class syntax
 class Shape {
@@ -82,9 +78,9 @@ class Triangle extends Shape {
     }
 
     getPerimeter() {
-        let a = this.a || NaN;
-        let b = this.b || NaN;
-        let c = this.c || NaN;
+        let a = this.#a || NaN;
+        let b = this.#b || NaN;
+        let c = this.#c || NaN;
         return a + b + c;
     }
 
@@ -106,10 +102,10 @@ class Circle extends Shape {
     }
 
     getArea() {
-        return Math.PI * Math.pow(this.radius, 2);
+        return Math.PI * Math.pow(this.#radius, 2);
     }
 
     getCircumference() {
-        return this.radius * 2 * Math.PI;
+        return this.#radius * 2 * Math.PI;
     }
 }
