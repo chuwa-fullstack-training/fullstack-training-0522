@@ -1,5 +1,12 @@
 function counter() {
-    // implement here
+    let sum = 0;
+
+  return function (value) {
+    if (value !== undefined) {
+      sum += value;
+    }
+    return sum;
+  };
 }
 
 let count = counter();
