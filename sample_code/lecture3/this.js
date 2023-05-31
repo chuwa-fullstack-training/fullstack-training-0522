@@ -13,7 +13,7 @@ const obj = {
 
 callName(); // undefined
 obj.callName(); // obj
-callName.call(obj); // obj
+callName.call(obj); // obj -- 不需要再定义callName: callName
 
 // func.call(context, arg1, arg2, ...)
 
