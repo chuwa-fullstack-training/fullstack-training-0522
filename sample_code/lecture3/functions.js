@@ -25,6 +25,7 @@ let person = {
 };
 
 person.greet(); // Outputs: Hello, Aaron!
+person["greet"](); // Outputs: Hello, Aaron!
 
 
 /**
@@ -45,6 +46,9 @@ var o = {
   }
 };
 o.m(); // Invoke the method m on the object o.
+// 在哪里call的这个function，this就是什么 ==》 o.m()，this就是o
+let a = o.m;
+a(); // undefined, because where invoke this function is global/window
 
 
 /**

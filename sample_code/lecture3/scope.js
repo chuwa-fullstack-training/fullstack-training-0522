@@ -12,5 +12,5 @@ function f() {
     f1();
     console.log('inside f', 'a:', a, 'x:', x);
   }
-  f();
+f();
   

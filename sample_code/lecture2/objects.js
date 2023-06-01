@@ -59,7 +59,7 @@ myCat['meow']();
 // delete operator
 delete myDog.age;
 console.log("Dog's age:", myDog.age);
-
+a
 // in operator
 console.log('name' in myDog);
 for (let property in myDog) {
@@ -94,20 +94,20 @@ console.log(student.fullName); // Outputs: Alex Chen
 console.log(student.firstName); // Outputs: Alex
 console.log(student.lastName); // Outputs: Chen
 
-// Object.defineProperty(student, 'getFullName', {
-//   value: function () {
-//     return this.firstName + ' ' + this.lastName;
-//   },
-//   writable: false
-// });
+Object.defineProperty(student, 'getFullName', {
+  value: function () {
+    return this.firstName + ' ' + this.lastName;
+  },
+  writable: false
+});
 
-// Object.defineProperty(student, 'setFullName', {
-//   value: function () {
-//     let parts = value.split(' ');
-//     this.firstName = parts[0];
-//     this.lastName = parts[1];
-//   },
-//   writable: false
-// });
+Object.defineProperty(student, 'setFullName', {
+  value: function () {
+    let parts = value.split(' ');
+    this.firstName = parts[0];
+    this.lastName = parts[1];
+  },
+  writable: false
+});
 
-// console.log(student.getFullName()); // Outputs: Alex Chen
+console.log(student.getFullName()); // Outputs: Alex Chen

@@ -26,7 +26,7 @@ myFunction();
 console.log(functionVar);
 
 console.log(globalVar); // Accessible outside the function
-console.log(global.globalVar);
+console.log(global.globalVar); // undefined
 
 test = "I'm a global variable, test";
 console.log(global.test);

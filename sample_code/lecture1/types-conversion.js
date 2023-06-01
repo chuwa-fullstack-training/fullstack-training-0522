@@ -8,6 +8,7 @@ console.log(parsedInt); // Output: 42 (integer)
 let stringFloat = "3.14";
 let parsedFloat = parseFloat(stringFloat);
 console.log(parsedFloat); // Output: 3.14 (float)
+console.log(parseInt(stringFloat)); // Output: 3 (integer)
 
 // Converting number to string using toString()
 let number = 42;
