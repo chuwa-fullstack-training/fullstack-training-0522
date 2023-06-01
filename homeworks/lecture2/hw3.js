@@ -19,6 +19,7 @@ console.log( "A" - "B" + 2);
 
 console.log("0 || 1 = "+(0 || 1));
 
+//如果两个都是true, 就返回前面的值
 console.log("1 || 2 = "+(1 || 2));
 
 console.log("0 && 1 = "+(0 && 1));
