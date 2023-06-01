@@ -9,6 +9,8 @@ function f() {
   console.log(a);
 }
 
+//output: nothing
+
 // 2. When executed, what value will be output?
 function f() {
   if (true) {
@@ -16,13 +18,16 @@ function f() {
   }
   console.log(a);
 }
+//output: nothing
 
 // 3. When executed, what value will be output?
 function f() {
   a = 3;
 }
 f();
+//output: 7
 console.log(a);
+//output: undefined
 
 // 4.
 var a = 5;
@@ -35,6 +40,7 @@ function second() {
 }
 first();
 second();
+//output: 6
 
 // 5.
 var a = 5;
@@ -42,6 +48,7 @@ function f() {
   var a = 7;
   console.log(a);
 }
+//output: nothing
 
 // 6.
 var a = 1;
@@ -52,3 +59,5 @@ function b() {
 }
 b();
 console.log(a);
+
+//output: 1
