@@ -11,5 +11,15 @@
  *
  */
 const intersection = (nums1, nums2) => {
-  // Your solution here
+  const numbers = new Set(nums1);
+  return Array.from(
+    nums2.reduce((ans, number) => {
+      if (numbers.has(number)) {
+        ans.add(number);
+      }
+      return ans;
+    }, new Set())
+  );
 };
+console.log(`Example1 ans is ${intersection([1,2,2,1],[2,2])}`);
+console.log(`Example2 ans is ${intersection([4,9,5], [9,4,9,8,4])}`);
