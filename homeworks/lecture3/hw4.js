@@ -25,3 +25,30 @@ Triangle.prototype.constructor = Triangle;
 // 5. implement a method circumference for Circle class
 
 // 6. change all code above to use ES6 class syntax
+
+Triangle.prototype.getPerimeter = function() {
+    return this.a + this.b + this.c;
+}
+
+Triangle.prototype.getArea = function() {
+    let s = this.getPerimeter() / 2;
+    return Math.sqrt(s * (s - a) * (s - b) * (s - c));
+}
+
+function Circle(r) {
+    this.type = 'circle';
+    this.r = r;
+}
+
+Circle.prototype = Object.create(Shape.prototype);
+Circle.prototype.constructor = Circle;
+
+Circle.prototype.getArea = function() {
+    return Math.PI * this.r * this.r;
+}
+
+Circle.prototype.getCircumference = function() {
+    return 2 * Math.PI * this.r;
+}
+
+// see hw4_es6.js for 6.

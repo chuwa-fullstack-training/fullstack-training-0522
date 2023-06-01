@@ -12,5 +12,13 @@
  * user.password; // undefined
  */
 function User() {
-    // implement here
+    var password;
+    this.setPassword = function(p) { // I don't understand why setPassword('123') is Error, or how to make the error
+        password = p;                // I choose just to leave it like this and not check or sanitize the input at all
+    }
+    this.checkPassword = function(p) {
+        return password === p;
+    }
 }
+
+User.prototype.constructor = User;

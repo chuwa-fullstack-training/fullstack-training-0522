@@ -1,5 +1,8 @@
 function counter() {
-    // implement here
+    var count = 0;
+    return function(val = 0) {
+        return count += val;
+    }
 }
 
 let count = counter();

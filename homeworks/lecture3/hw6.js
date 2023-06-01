@@ -18,12 +18,20 @@
  * 1 <= nums[i] <= 100
  */
 function numIdenticalPairs(nums) {
-  // implement here
+  return nums.reduce((buckets, i) => {
+    if (!buckets[i]) {
+      buckets[i] = 0;
+    }
+    ++buckets[i];
+    return buckets;
+  }, []).reduce((result, i) => {
+    return result += i * (i - 1) / 2;
+  }, 0);
 }
 
 /**
  * Given a string s, remove the vowels 'a', 'e', 'i', 'o', and 'u' from it, and return the new string.
  */
 function removeVowels(s) {
-  // implement here
+  return s.split(/[aeiou]/).reduce((a, b) => (a.concat(b)));
 }
