@@ -46,4 +46,4 @@ function removeVowels(s) {
   }
   return res
 }
-console.log(removeVowels('abcdefghijklmnop'))
+console.log(removeVowels('abcdefghijklmnopABCDEFGHIJKLMNOP'))
