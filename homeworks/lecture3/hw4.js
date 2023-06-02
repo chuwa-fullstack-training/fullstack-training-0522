@@ -38,6 +38,9 @@ console.log(triangleInstance.getType());
 console.log(triangleInstance.getPerimeter());
 console.log(triangleInstance.getArea());
 
+// 1. implement a method getPerimeter for Triangle class
+// 2. implement a method getArea for Triangle class
+
 // 3. implement a new class Circle. this class should inherit from Shape class, and have a radius property.
 // 4. implement a method area for Circle class
 // 5. implement a method circumference for Circle class
@@ -74,3 +77,4 @@ console.log(circleInstance.circumference());
 // circle
 // 3.141592653589793
 // 6.283185307179586
+// 6. change all code above to use ES6 class syntax

@@ -17,6 +17,7 @@
  * 1 <= nums.length <= 100
  * 1 <= nums[i] <= 100
  */
+<<<<<<< HEAD
 function numIdenticalPairs(nums) {//brute force
   // implement here
   let result = [];
@@ -34,12 +35,18 @@ function numIdenticalPairs(nums) {//brute force
 nums = [1,2,3];
 
 console.log(numIdenticalPairs(nums));
+=======
+function numIdenticalPairs(nums) {
+  // implement here
+}
+>>>>>>> main
 
 /**
  * Given a string s, remove the vowels 'a', 'e', 'i', 'o', and 'u' from it, and return the new string.
  */
 function removeVowels(s) {
   // implement here
+<<<<<<< HEAD
   if (!s)
     return '';
   let vowels = ['a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U'];
@@ -53,3 +60,6 @@ function removeVowels(s) {
 }
 console.log(removeVowels(""));//''
 console.log(removeVowels("abcdefgioU"));//bcdfg
+=======
+}
+>>>>>>> main
