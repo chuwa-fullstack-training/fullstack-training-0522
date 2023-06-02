@@ -32,7 +32,8 @@ function f() {
 f();
 console.log(a);
 /**
- * a is given value is function f(). After executing f(), a is 3
+ * Because a is not declared with var, let, or const, it is not a local variable within the function. 
+ * Instead, it becomes a global variable (variable hoisting)
  * Output 3
  */
 

@@ -11,5 +11,5 @@ function sum(a, b = 0) {
     };
 }
 
-console.log(sum(2)(3));
-console.log(sum(2, 3));
+console.log(sum(2)(3) === 5);
+console.log(sum(2, 3) === 5);
