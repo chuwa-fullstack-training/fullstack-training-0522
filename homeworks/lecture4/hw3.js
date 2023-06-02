@@ -7,4 +7,31 @@
  * console.log(instance1 === instance2); // Output: true
  */
 
-// your code here
+//ES5
+var Singleton = (function () {
+    var instance; 
+  
+    function Singleton() {
+      if (instance) {
+        return instance; 
+      }
+
+      this.name = 'Singleton Instance';
+      instance = this;
+    }
+  
+    return Singleton;
+  })();
+
+
+  // ES6
+  class Singleton {
+    constructor() {
+      if (Singleton.instance) {
+        return Singleton.instance; 
+      }
+  
+      this.name = 'Singleton Instance';
+      Singleton.instance = this;
+    }
+  }
