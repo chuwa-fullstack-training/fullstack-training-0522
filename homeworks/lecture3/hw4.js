@@ -51,6 +51,10 @@ class Shape {
     constructor() {
         this.type = 'shape';
     }
+
+    getType() {
+        return this.type;
+    }
 }
 
 class Triangle extends Shape {
