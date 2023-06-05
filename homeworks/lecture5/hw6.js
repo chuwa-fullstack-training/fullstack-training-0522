@@ -10,6 +10,19 @@ function sequencePromise(urls) {
     return getJSON(url).then(response => results.push(response));
   }
   // implement your code here
+
+  // using async/await:
+  // for (const url of urls) {
+  //   const response = await getJSON(url);
+  //   results.push(response);
+  // }
+  // return results;
+
+  // using reduce function:
+  return urls.reduce((promiseChain, currentUrl) => {
+    return promiseChain.then(() => fetchOne(currentUrl));
+  }, Promise.resolve()).then(() => results);
+
 }
 
 function getJSON(url) {

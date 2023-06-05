@@ -4,7 +4,6 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
         {
             "type": "node",
             "request": "launch",
@@ -12,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\homeworks\\lecture4\\hw1.js"
+            "program": "${workspaceFolder}\\sample_code\\lecture5\\promise-catch.js"
         }
     ]
 }

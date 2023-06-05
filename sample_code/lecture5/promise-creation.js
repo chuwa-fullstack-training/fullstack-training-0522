@@ -9,7 +9,8 @@ function getUserName() {
   );
 }
 
-getUserName();
+getUserName();                                  // Promise {<pending>}
+getUserName().then(name => console.log(name));  // name
 
 // Promise-based on synchronous values
 function getUser() {
