@@ -12,4 +12,9 @@
  */
 const intersection = (nums1, nums2) => {
   // Your solution here
+  var res = [];
+  for(let x of nums1) {
+    if(nums2.includes(x) && !res.includes(x)) res.push(x);
+  }
+  return res;
 };
