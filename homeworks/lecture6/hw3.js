@@ -7,7 +7,7 @@
 function debounce(func, delay) {
   // your code here
 }
-
+debounce(console.log(111));
 /**
  * implement throttle function
  * explain: `func` will be called every `delay` ms. if `func` is called again before `delay` ms, the call will be ignored
