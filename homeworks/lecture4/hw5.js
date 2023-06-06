@@ -14,16 +14,17 @@ data.child = data;
 
 const cloneDeepWithLoop = (obj) => {
     // Implement the function here
-    const cloned = new Map();       // {orignal obj, clone}
+    const cloned = [];       // {orignal obj, clone}
     function deepClone(obj) {
         if(obj === null || typeof obj !== 'object') return obj;
 
-        if(cloned.has(obj)) return cloned.get(obj);
+        const found = cloned.find((item) => item.original === obj);
+        if(found) return found.clone;
 
         const clone = Array.isArray(obj) ? [] : {};
-        cloned.set(obj, clone);
+        cloned.push({ original: obj, clone });
         for(let prop in obj) {
-            if(Object.hasOwnProperty.call(obj, prop)) clone[prop] = deepClone[obj[prop]];
+            if(Object.hasOwnProperty.call(obj, prop)) clone[prop] = deepClone(obj[prop]);
         }
         return clone;
     }
@@ -31,5 +32,5 @@ const cloneDeepWithLoop = (obj) => {
 }
 
 const newObj = cloneDeepWithLoop(data);
-console.log(newObj.child === newObj);
+console.log(newObj);
 console.log(data);
