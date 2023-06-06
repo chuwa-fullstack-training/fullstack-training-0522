@@ -15,19 +15,15 @@ function User() {
     // implement here
     var password = '';
 
-    function setPassword(pw) {
+    this.setPassword = function(pw) {
         if(password === '') password = pw;
         else console.log('Error');
-    }
+    };
 
-    function checkPassword(pw) {
+    this.checkPassword = function(pw) {
         return password === pw;
-    }
-
-    return {
-        setPassword: setPassword,
-        checkPassword: checkPassword
-    }
+    };
+    // Since User is a constructor function, it's not suggested returning anything from it
 }
 
 const user = new User();
