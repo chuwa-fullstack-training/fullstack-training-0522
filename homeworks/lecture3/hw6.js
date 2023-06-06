@@ -17,13 +17,39 @@
  * 1 <= nums.length <= 100
  * 1 <= nums[i] <= 100
  */
-function numIdenticalPairs(nums) {
+function numIdenticalPairs(nums) {//brute force
   // implement here
+  let result = [];
+  for (let i = 0; i < nums.length -1; i++){
+    for (let j = i + 1; j < nums.length; j++){
+      if (nums[i] === nums[j])
+        result.push([i, j]);
+    }
+  }
+  //console.log(result);
+  return result.length;
 }
+// nums = [1,2,3,1,1,3];
+// nums = [1,1,1,1];
+nums = [1,2,3];
+
+console.log(numIdenticalPairs(nums));
 
 /**
  * Given a string s, remove the vowels 'a', 'e', 'i', 'o', and 'u' from it, and return the new string.
  */
 function removeVowels(s) {
   // implement here
+  if (!s)
+    return '';
+  let vowels = ['a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U'];
+  let result = s;
+  for (let char in s){
+    if (vowels.includes(s[char])){
+      result = result.replace(s[char], '');
+    }
+  }
+  return result;
 }
+console.log(removeVowels(""));//''
+console.log(removeVowels("abcdefgioU"));//bcdfg
