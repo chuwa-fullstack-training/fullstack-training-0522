@@ -11,11 +11,12 @@ function sequencePromise(urls) {
   }
   // implement your code here
   // here we use `Promise.allSettled()`
-  // The Promise.allSettled() static method takes an iterable of promises as input and returns a single Promise. 
-  const promises = urls.map(url => results.push(fetchOne(url))); // get all the results from each url
-  promises.allSettled(results)
-    .then(allResults => console.log(allResults))
-    .catch(error => console.log(error.message));
+  // The Promise.allSettled() static method takes an iterable of promises as input and returns a single Promise.
+  const promises = urls.map((url) => results.push(fetchOne(url))); // get all the results from each url
+  promises
+    .allSettled(results)
+    .then((allResults) => console.log(allResults))
+    .catch((error) => console.log(error.message));
 }
 
 // from hw5
@@ -40,7 +41,7 @@ function getJSON(url) {
           resolve(parsedData);
         } catch (e) {
           reject(e.message);
-        }0-
+        }
       });
     });
 
@@ -63,4 +64,4 @@ const urls = [
   "https://api.github.com/search/repositories?q=react",
   "https://api.github.com/search/repositories?q=nodejs",
 ];
-sequencePromise(urls)
+sequencePromise(urls);
