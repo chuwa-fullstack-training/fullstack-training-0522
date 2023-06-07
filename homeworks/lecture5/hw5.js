@@ -3,7 +3,7 @@
 const https = require("https");
 
 // function httpsRequest(url) {
-//   const request = https.get(url, (response) => {
+//   const request = https.get(url, response => {
 //     if (response.statusCode !== 200) {
 //       console.error(
 //         `Did not get an OK from the server. Code: ${response.statusCode}`
@@ -65,13 +65,3 @@ function getJSON(url) {
     });
   });
 }
-
-// test case
-const newURL = "https://api.github.com/search/repositories?q=javascript";
-getJSON(newURL)
-  .then((response) => {
-    console.log(response);
-  })
-  .catch((error) => {
-    console.error(error);
-  });
