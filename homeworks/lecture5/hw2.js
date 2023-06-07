@@ -8,7 +8,24 @@
  * @param {string[]} str
  */
 function reverseWords(str) {
-  // your code here
+  const arr = str.split('');
+  arr.reverse();
+
+  let start = 0;
+  let end = 0;
+
+  while (end < arr.length) {
+    if (arr[end] === ' ') {
+      reverseCharacters(arr, start, end - 1);
+      start = end + 1;
+    }
+    end++;
+  }
+
+  reverseCharacters(arr, start, end - 1);
+
+  const reversedStr = arr.join('');
+  return reversedStr;
 }
 
 const input = 'the sky is blue'.split(''); // ['t', 'h', 'e', ' ', 's', 'k', 'y', ' ', 'i', 's', ' ', 'b', 'l', 'u', 'e']
