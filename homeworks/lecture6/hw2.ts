@@ -28,7 +28,7 @@ const persons: Person[] = [
 // fix the error showing in the following code:
 function logPerson(person: Person) {
   let additionalInformation: string;
-  if (person.role) {
+  if ('role' in person) {
     additionalInformation = person.role;
   } else {
     additionalInformation = person.occupation;
@@ -37,3 +37,11 @@ function logPerson(person: Person) {
 }
 
 persons.forEach(logPerson);
+
+// It should use TypeScript's type guards and use the in operator to check if a specific property exists in the object
+
+/*
+Using typeof in this case will not work as expected because typeof returns the data type of its operand, 
+which can be "number", "string", "boolean", "object", "function", "undefined", "symbol", or "bigint". 
+It doesn't provide information about a specific interface that the object might adhere to, or whether a particular property exists on the object.
+*/
