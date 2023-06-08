@@ -6,7 +6,20 @@
  */
 function debounce(func, delay) {
   // your code here
+  let timeoutID;
+  return function() {
+    clearTimeout(timeoutID);
+    timeoutID = setTimeout(() => func.apply(this, arguments), delay)
+  }
 }
+
+// let counter = 0;
+// let incrementCounter = debounce(() => { counter++; console.log(counter); }, 3000);
+
+// incrementCounter();
+// incrementCounter();
+// incrementCounter();
+
 
 /**
  * implement throttle function
@@ -14,4 +27,5 @@ function debounce(func, delay) {
  */
 function throttle(func, delay) {
   // your code here
+
 }

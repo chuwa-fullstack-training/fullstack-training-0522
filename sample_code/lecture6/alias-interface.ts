@@ -36,3 +36,6 @@ interface IUser {
 // type User = {
 //     printName?: () => void;
 // }
+
+// type: (like)
+// let/const User = {}

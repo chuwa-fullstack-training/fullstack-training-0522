@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\sample_code\\lecture5\\promise-catch.js"
+            "program": "${workspaceFolder}\\homeworks\\lecture6\\hw4.js"
         }
     ]
 }

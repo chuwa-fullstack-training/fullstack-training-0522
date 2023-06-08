@@ -1,5 +1,5 @@
 interface Shape {
-  kind: "square" | "circle";
+  kind: "square" | "circle";      // 清晰的，可分辨的不同值 进行 union
   radius?: number;
   sideLength?: number;
 }

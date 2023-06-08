@@ -13,7 +13,8 @@ prettyPrint(["hello", "world"]);
 prettyPrint(null);
 
 function prettyPrint2(strs: string | string[] | null) {
-  if (strs) {
+  // if (strs) {
+  if (typeof strs === "string") {
     if (Array.isArray(strs)) {
       console.log(strs.join(" + "));
     } else {

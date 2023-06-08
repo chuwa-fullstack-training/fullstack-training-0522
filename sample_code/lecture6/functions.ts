@@ -25,8 +25,14 @@ class PersonImpl implements Person {
   };
 }
 
+const person1 = new PersonImpl("Aaron");
+
+
+
 type PersonConstructor = new (name: string) => Person;
 
+// generic function
+// use different implementations of the Person interface without changing the createPerson function
 function createPerson(ctor: PersonConstructor, name: string) {
   return new ctor(name);
 }
