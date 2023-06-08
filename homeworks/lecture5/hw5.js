@@ -32,6 +32,28 @@ const https = require('https');
 //   });
 // }
 
+console.log(getJSON('https://tools.learningcontainer.com/sample-json.json'))
+
+var XMLHttpRequest = require('xhr2').XMLHttpRequest;
+
 function getJSON(url) {
-  // implement your code here
+  return new Promise((resolve, reject) => {
+    const request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.onload = function () {
+      try {
+        if (this.status === 200) {
+          resolve(JSON.parse(this.response));
+        } else {
+          reject(`Did not get an OK from the server. Code: ${response.statusCode}`);
+        }
+      } catch (e) {
+        reject(e.message);
+      }
+    };
+    request.onerror = function () {
+      reject(`Did not get an OK from the server. Code: ${response.statusCode}`);
+    };
+    request.send();
+  });
 }

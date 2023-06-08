@@ -11,5 +11,16 @@
  *
  */
 const intersection = (nums1, nums2) => {
-  // Your solution here
+  const mySet = new Set();
+  for(let i of nums1){
+    console.log(i)
+    if(nums2.includes(i)){
+      mySet.add(i);
+    }
+  }
+  // set convert to array using spread operator 
+  return [...mySet];
 };
+
+let nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+console.log(intersection(nums1, nums2));

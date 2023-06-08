@@ -30,9 +30,10 @@ console.log(ReverseString);
 
 const arr1 = [[0, 1], [2, 3], [4, 5]];
 const arr2 = [[0, 1], [2, 3], [4, [5, 6]]];
-const flatten = (arr1.reduce((acc, add) => {
+const flatten = (arr2.reduce((acc, add) => {
   // concat method will return a new array
-  acc = acc.concat(add);
+  // in concat, a spread operator is needed
+  acc = acc.concat(...add);
   return acc
 }, []))
 

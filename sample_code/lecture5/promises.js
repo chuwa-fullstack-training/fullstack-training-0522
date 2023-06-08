@@ -4,6 +4,7 @@ function getJSON(url) {
     request.open('GET', url);
     request.onload = function () {
       try {
+        console.log("status code is: ", this.status)
         if (this.status === 200) {
           resolve(JSON.parse(this.response));
         } else {
