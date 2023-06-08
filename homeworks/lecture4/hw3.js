@@ -7,4 +7,16 @@
  * console.log(instance1 === instance2); // Output: true
  */
 
-// your code here
+function Singleton() {
+    let proto = Object.getPrototypeOf(this);
+    if (proto.thisSingleton === undefined) {
+        proto.thisSingleton = this;
+    }
+    return proto.thisSingleton;
+}
+
+Singleton.prototype.constructor = Singleton;
+
+const instance1 = new Singleton();
+const instance2 = new Singleton();
+console.log(instance1 === instance2);

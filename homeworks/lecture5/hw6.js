@@ -9,16 +9,22 @@ function sequencePromise(urls) {
   function fetchOne(url) {
     return getJSON(url).then(response => results.push(response));
   }
-  // implement your code here
-}
-
-function getJSON(url) {
-  // this is from hw5
+  function fetchAll(index) {
+    if (index < urls.length) {
+      return fetchOne(urls[index]).then(() => fetchAll(index + 1));
+    }
+    return Promise.resolve(results);
+  }
+  return fetchAll(0);
 }
 
 // function getJSON(url) {
-//     return fetch(url).then(res => res.json());
+//   // this is from hw5
 // }
+
+function getJSON(url) {
+    return fetch(url).then(res => res.json());
+}
 
 // test your code
 const urls = [
@@ -26,3 +32,6 @@ const urls = [
   'https://api.github.com/search/repositories?q=react',
   'https://api.github.com/search/repositories?q=nodejs'
 ];
+
+sequencePromise(urls).then((res) => 
+console.log(res));

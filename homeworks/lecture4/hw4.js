@@ -11,5 +11,13 @@
  *
  */
 const intersection = (nums1, nums2) => {
-  // Your solution here
+    nums1.sort();
+    nums2.sort();
+    let intersect = [];
+    for (let i = 0, j = 0; i < nums1.length && j < nums2.length; nums1[i] < nums2[j] ? ++i : ++j) {
+      if (nums1[i] == nums2[j] && nums1[i] !== intersect[intersect.length - 1]) {
+        intersect.push(nums1[i]);
+      }
+    }
+    return intersect;
 };
