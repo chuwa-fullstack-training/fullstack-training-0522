@@ -13,8 +13,16 @@
  */
 function User() {
     var password;
-    this.setPassword = function(p) { // I don't understand why setPassword('123') is Error, or how to make the error
-        password = p;                // I choose just to leave it like this and not check or sanitize the input at all
+    this.setPassword = function(p) {
+        if (password !== undefined) {
+            console.error("Error cannot redefine password");
+            return;
+        }
+        if (typeof p != "string") {
+            console.error("password must be a string");
+            return;
+        }
+        password = p;
     }
     this.checkPassword = function(p) {
         return password === p;
