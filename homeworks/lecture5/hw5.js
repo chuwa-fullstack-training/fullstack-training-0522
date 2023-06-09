@@ -1,6 +1,6 @@
 // change http request into promise-based function
 
-const https = require('https');
+
 
 // function httpsRequest(url) {
 //   const options = {
@@ -38,9 +38,13 @@ const https = require('https');
 // }
 
 function getJSON(url) {
-  // implement your code here
+  const options = {
+    headers: {
+      'User-Agent': 'request'
+    }
+  };
   return new Promise((resolve, reject) => {
-    https.get(url, response => {
+    https.get(url, options, response => {
       if (response.statusCode !== 200) {
         reject(
           `Did not get an OK from the server. Code: ${response.statusCode}`

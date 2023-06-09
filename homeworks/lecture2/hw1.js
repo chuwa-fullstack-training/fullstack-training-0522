@@ -56,7 +56,7 @@ function restrict(o, p) {
 function intersection(o, p) {
     // implement your code here
     let result = {};
-    for(let prop in 0) {
+    for(let prop in o) {
         if(p.hasOwnProperty(prop)) {
             result[prop] = o[prop];
         }

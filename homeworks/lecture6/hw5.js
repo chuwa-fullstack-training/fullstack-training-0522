@@ -33,14 +33,53 @@ print();
 // hint: `reduce`
 const nums = [3, 1, 6, 9, 2];
 
-function printList() {
+function printList(nums) {
   // your code here
-   
+  nums.reduce((acc, cur) => {
+    return acc.then(() => new Promise(resolve => {        // .then() should return a value or promise ==> need new Promise()
+      setTimeout(() => {
+        console.log(cur);
+        resolve();
+      }, 1000);
+    }));
+  }, Promise.resolve());
 }
+printList(nums);
+
 
 // 2. traffic light
 // output: red -> green -> yellow -> red -> ...
 // the delay time is up to you, but the order has to be correct
-function trafficLight() {
-  // your code here
+function lightLoop() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        console.log("red");
+        resolve();
+      }, 1000)
+    })
+    .then(() => {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          console.log("green");
+          resolve();
+        }, 1000)
+      })
+    })
+    .then(() => { 
+      return new Promise(resolve => {
+        setTimeout(() => {
+          console.log("yellow");
+          resolve();
+        }, 1000)
+      })
+    })
 }
+// }
+
+async function trafficLight() {
+  while (true) {
+    await lightLoop();
+  }
+}
+
+trafficLight()
