@@ -13,3 +13,18 @@
  */
 
 // your code here
+const fs = require('fs');
+const path = require('path');
+const process = require('process');
+
+var fileprinter = function (dir, extensionFilter) {
+      fs.readdir(dir, (err, files) => {
+            if (err) throw new Error(err);
+            const res = files.filter(file => path.extname(file) === extensionFilter);
+            res.map(file => console.log(file));
+      });
+}
+
+const [nodeDir, fileDir, extension] = process.argv;
+fileprinter(path.dirname(fileDir), extension);
+// run `node ./homeworks/lecture7/hw1.js extension` in command line

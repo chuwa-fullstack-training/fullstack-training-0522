@@ -19,3 +19,52 @@
  */
 
 // your code here
+const http = require('http');
+const URL = require('url');
+
+const server = http.createServer((req, res) => {
+      const { url, method } = req;
+      if (method === 'GET') {
+            var parseUrl = URL.parse(url);
+
+            if (!parseUrl.path || !parseUrl.query) {
+                  res.writeHead(400, { 'Content-Type': 'text/plain' });
+                  res.end('Bad Request');
+            }
+            else if (parseUrl.pathname === '/api/parsetime') {
+                  res.writeHead(200, { 'Content-Type': 'application/json' });
+                  res.end(JSON.stringify(parseTime(parseUrl.query)));
+            } else if (parseUrl.pathname === '/api/unixtime') {
+                  res.writeHead(200, { 'Content-Type': 'application/json' });
+                  res.end(JSON.stringify(unixTime(parseUrl.query)));
+            } else {
+                  res.writeHead(404, { 'Content-Type': 'text/plain' });
+                  res.end('Not Found');
+            }
+      } else {
+            res.writeHead(503, { 'Content-Type': 'text/plain' });
+            res.end('Unsupported request');
+      }
+});
+
+function parseTime(query) {
+      let time = query.split('T')[1];
+      const [hh, mm, ss] = time.split(':');
+      return {
+            "hour": +hh,
+            "minute": +mm,
+            "second": +(ss.split('.')[0])
+      }
+}
+
+function unixTime(query) {
+      let time = query.split('=')[1];
+      const dateObj = new Date(time);
+      const unixTime = dateObj.getTime();
+      return { "unixtime": unixTime };
+}
+
+let port = 3000;
+server.listen(port, () => {
+      console.log(`Server is runing on port ${port}`);
+})
