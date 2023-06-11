@@ -1,6 +1,6 @@
 // change http request into promise-based function
 
-const https = require('https');
+const https = require("https");
 
 // function httpsRequest(url) {
 //   const options = {
@@ -39,8 +39,27 @@ const https = require('https');
 
 function getJSON(url) {
   // implement your code here
+  return new Promise((resolve, reject) => {
+    const http = new XMLHttpRequest();
+    http.open("GET", url);
+    http.onload = function () {
+      try {
+        if (this.status == 200) {
+          resolve(JSON.parse(this.response));
+        } else {
+          reject(this.status + " " + this.statusText);
+        }
+      } catch (e) {
+        reject(e.message);
+      }
+    };
+    http.onerror = function () {
+      reject(this.status + " " + this.statusText);
+    };
+    http.send();
+  });
 }
 
-getJSON('https://api.github.com/search/repositories?q=javascript')
-  .then(response => console.log(response.items.length)) // output: 30
-  .catch(err => console.log(err)); // if you remove options from https.get parameters, you might see an error
+getJSON("https://api.github.com/search/repositories?q=javascript")
+  .then((response) => console.log(response.items.length)) // output: 30
+  .catch((err) => console.log(err)); // if you remove options from https.get parameters, you might see an error
