@@ -6,4 +6,6 @@
  */
 function format(num) {
   // your code here
+  return Number(num).toLocaleString();
 }
+// console.log(format(1234.56));
