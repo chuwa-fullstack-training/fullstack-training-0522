@@ -7,7 +7,7 @@
 function sequencePromise(urls) {
   const results = [];
   function fetchOne(url) {
-    return getJSON(url).then(response => results.push(response));
+    return getJSON(url).then((response) => results.push(response));
   }
   // implement your code here
 }
@@ -22,7 +22,7 @@ function getJSON(url) {
 
 // test your code
 const urls = [
-  'https://api.github.com/search/repositories?q=javascript',
-  'https://api.github.com/search/repositories?q=react',
-  'https://api.github.com/search/repositories?q=nodejs'
+  "https://api.github.com/search/repositories?q=javascript",
+  "https://api.github.com/search/repositories?q=react",
+  "https://api.github.com/search/repositories?q=nodejs",
 ];
