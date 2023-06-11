@@ -1,4 +1,4 @@
-interface User {
+interface User2 {
   name: string;
   age: number;
   occupation: string;
@@ -10,7 +10,7 @@ interface Admin {
   role: string;
 }
 
-type Person = User | Admin;
+type Person = User2 | Admin;
 
 const persons: Person[] = [
   {
@@ -28,7 +28,8 @@ const persons: Person[] = [
 // fix the error showing in the following code:
 function logPerson(person: Person) {
   let additionalInformation: string;
-  if (person.role) {
+  // if (person.role) { //role doesn't exist on type Person
+  if("role" in person){
     additionalInformation = person.role;
   } else {
     additionalInformation = person.occupation;
@@ -37,3 +38,4 @@ function logPerson(person: Person) {
 }
 
 persons.forEach(logPerson);
+
