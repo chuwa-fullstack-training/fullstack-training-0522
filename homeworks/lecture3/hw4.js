@@ -18,10 +18,84 @@ Triangle.prototype.constructor = Triangle;
 
 // your code goes here
 // 1. implement a method getPerimeter for Triangle class
+Triangle.prototype.getPerimeter = function() {
+    return this.a + this.b + this.c;
+}
+
 // 2. implement a method getArea for Triangle class
+Triangle.prototype.getArea = function() {
+    const p = this.getPerimeter() / 2;
+    return Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c));
+}
 
 // 3. implement a new class Circle. this class should inherit from Shape class, and have a radius property.
+function Circle(radius) {
+    this.type = 'circle';
+    this.radius = radius;
+}
+Circle.prototype = Object.create(Shape.prototype);
+Circle.prototype.constructor = Circle;
+
 // 4. implement a method area for Circle class
+Circle.prototype.getArea = function() {
+    return Math.PI * this.radius * this.radius;
+}
+
 // 5. implement a method circumference for Circle class
+Circle.prototype.circumference = function() {
+    return 2 * Math.PI * this.radius;
+}
 
 // 6. change all code above to use ES6 class syntax
+class Shape {
+    constructor() {
+        this.type = 'shape';
+        this.meah = 'meah';
+    }
+
+    getType() {
+        return this.type;
+    }
+}
+
+class Triangle extends Shape {
+    constructor(a, b, c) {
+        super();
+        this.type = 'triangle';
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
+    getPerimeter() {
+        return this.a + this.b + this.c;
+    }
+
+    getArea() {
+        const p = this.getPerimeter() / 2;
+        return Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c));
+    }
+}
+
+class Circle extends Shape {
+    constructor(radius) {
+        super();
+        this.type = 'circle';
+        this.radius = radius;
+    }
+
+    getArea() {
+        return Math.PI * this.radius * this.radius;
+    }
+
+    circumference() {
+        return 2 * Math.PI * this.radius;
+    }
+}
+
+// test
+let t = new Triangle(1, 2, 3);
+console.log(t.constructor === Triangle);
+console.log(Shape.prototype.isPrototypeOf(t));
+console.log(t.getPerimeter());
+console.log(t.getArea());
