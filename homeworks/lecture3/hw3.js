@@ -1,5 +1,13 @@
 function counter() {
     // implement here
+    // initialize sum as 0
+    let sum = 0;
+
+    // return a function that takes another number
+    return (num) => {
+        if (num) sum += num;
+        return sum;
+    }
 }
 
 let count = counter();
