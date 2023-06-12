@@ -6,7 +6,9 @@ const printPoint = ([x, y]) => {
   console.log(`(${x}, ${y})`);
 }
 
+export const PI = 3.14;
+
 export default {
-    getDistance,
-    printPoint
+  getDistance,
+  printPoint
 }

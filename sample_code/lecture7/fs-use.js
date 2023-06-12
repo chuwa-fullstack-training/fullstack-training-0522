@@ -3,7 +3,8 @@ const fs = require('fs');
 const path = require('path');
 
 const fileName = path.join(__dirname, 'demo.txt');
-// log('start');
+
+log('start');
 // async
 fs.writeFile(fileName, 'Hello World', err => {
   if (err) {
@@ -11,8 +12,8 @@ fs.writeFile(fileName, 'Hello World', err => {
   } else {
     log('The file has been saved!');
   }
-});
-// log('after write');
+}); 
+log('after write');
 
 fs.readFile(fileName, { encoding: 'utf8' }, (err, data) => {
   if (err) {
@@ -21,6 +22,7 @@ fs.readFile(fileName, { encoding: 'utf8' }, (err, data) => {
     log(data);
   }
 });
+
 
 // sync
 // fs.writeFileSync(fileName, 'Hello World');
