@@ -12,4 +12,26 @@
  *  - process.argv[2] is the first command-line argument
  */
 
-// your code here
+const fs = require('fs');
+const path = require('path');
+
+// Get command-line arguments
+const dir = process.argv[2];
+const ext = '.' + process.argv[3];
+console.log(dir)
+console.log(ext)
+
+// Read directory
+fs.readdir(dir, function(err, files) {
+  if (err) {
+    return console.error(err);
+  }
+  console.log('files: ' + files)
+
+  files.forEach(function(file) {
+    // if the extension matches
+    if (path.extname(file) === ext) {
+      console.log(file);
+    }
+  });
+});
