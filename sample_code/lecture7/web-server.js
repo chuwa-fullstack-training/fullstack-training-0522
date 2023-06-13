@@ -27,6 +27,7 @@ const server = http.createServer((req, res) => {
       let body = [];
       req.on('data', chunk => {
         body.push(chunk);
+        console.log(body);
       });
       req.on('end', () => {
         const parsedBody = Buffer.concat(body).toString();

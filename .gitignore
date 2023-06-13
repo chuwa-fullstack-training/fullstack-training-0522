@@ -9,3 +9,5 @@ books/
 .idea/
 
 marp-diagrams/
+
+.vscode/

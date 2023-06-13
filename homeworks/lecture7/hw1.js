@@ -16,13 +16,12 @@
 const { log } = require("console");
 const fs = require("fs");
 const path = require("path");
-let fileName;
 
 if (!(process.argv[2] && process.argv[3])) {
   console.log("please add directory and extension");
 } else {
-  fileName = path.join(__dirname, process.argv[2]);
-  requiredExt = process.argv[3];
+  let fileName = path.join(__dirname, process.argv[2]);
+  let requiredExt = process.argv[3];
   fs.readdir(fileName, (err, data) => {
     if (err) {
       throw err;

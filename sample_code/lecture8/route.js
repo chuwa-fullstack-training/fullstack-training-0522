@@ -9,14 +9,22 @@ const postRouter = require('./routers/post');
 app.use('/api', userRouter);
 app.use('/api', postRouter);
 
-// app.use(express.static('public'));
+app.use(express.static('public'));
 
-// app.get('/home/:name', (req, res, next) => {
-//   console.log('query', req.query);
-//   console.log('params', req.params);
-//   res.send(`this is ${req.params.name} page`);
-//   //   next();
-// });
+// request parameter
+app.get('/home/:name', (req, res, next) => {
+  console.log('query', req.query);
+  console.log('params', req.params);
+  res.send(`this is ${req.params.name} page`);
+  //   next();
+});
+
+// query string
+app.get('/home', (req, res, next) => {
+    console.log('query', req.query);
+    res.send(`this is ${req.query?.name} page`);
+    //   next();
+  });
 
 // // app.get('/home', (req, res, next) => {
 // //   console.log('this is the second middleware');
