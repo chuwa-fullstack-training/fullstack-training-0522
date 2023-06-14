@@ -26,9 +26,14 @@ const persons: Person[] = [
 ];
 
 // fix the error showing in the following code:
+/* 
+ * The error occurs because not all `Person` objects have the `role` property.
+ * The `Person` type can either represent a `User` or an `Admin`.
+ * So here we use type guards to make sure there is such property in the `Person` object.
+ */
 function logPerson(person: Person) {
   let additionalInformation: string;
-  if (person.role) {
+  if ("role" in person) {  
     additionalInformation = person.role;
   } else {
     additionalInformation = person.occupation;
@@ -37,3 +42,4 @@ function logPerson(person: Person) {
 }
 
 persons.forEach(logPerson);
+

@@ -4,6 +4,7 @@
  * example: 1234.56 => 1,234.56
  * @param {number} num
  */
+// lazy way
 function format(num) {
-  // your code here
+  return Number(num).toLocaleString();
 }

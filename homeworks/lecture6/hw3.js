@@ -5,8 +5,23 @@
  * @param delay
  */
 function debounce(func, delay) {
-  // your code here
+  let timeoutID;
+  return function (...args) {
+    clearTimeout(timeoutID); // use `clearTimeout` to reset the timer
+    timeoutID = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
 }
+
+// test
+// function testFunc() {
+//   console.log("Debounce function called.");
+// }
+
+// const callDebounce = debounce(testFunc, 3000);
+// callDebounce(); // schedule the testFunct to be called in 3s.
+// callDebounce(); // reset the timer
 
 /**
  * implement throttle function
@@ -14,4 +29,28 @@ function debounce(func, delay) {
  */
 function throttle(func, delay) {
   // your code here
+  let timeoutID;
+  let lastCallTime = 0;
+
+  return function (...args) {
+    const currTime = Date.now();
+    if (currTime - lastCallTime >= delay) {
+      lastCallTime = currTime;
+      func.apply(this, args);
+    } else {
+      clearTimeout(timeoutID);
+      timeoutID = setTimeout(() => {
+        lastCallTime = currentTime;
+        func.apply(this, args);
+      }, delay - (currTime - lastCallTime));
+    }
+  };
 }
+
+// test
+function testFunc2() {
+  console.log("Throttle function called.");
+}
+
+const callThrottle = throttle(testFunc2, 2000);
+callThrottle();
