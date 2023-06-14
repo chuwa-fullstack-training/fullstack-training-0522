@@ -13,7 +13,7 @@ app.use(express.static('public'));
 
 // request parameter
 app.get('/home/:name', (req, res, next) => {
-  console.log('query', req.query);
+  // console.log('query', req.query);
   console.log('params', req.params);
   res.send(`this is ${req.params.name} page`);
   //   next();

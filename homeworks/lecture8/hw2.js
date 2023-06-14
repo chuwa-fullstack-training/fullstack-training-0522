@@ -42,3 +42,28 @@
  *  }
  * }
  */
+
+const { log } = require('console');
+const express = require("express");
+const app = express();
+const port = 3000;
+
+app.get("/hw2", async (req, res, next) => {
+    // log("req.query: ", req.query);
+    let mergeRes = {};
+    for (let queryString of Object.values(req.query)) {
+        let hnAPI = `https://hn.algolia.com/api/v1/search?query=${queryString}&tags=story`;
+        // log("hnAPI", hnAPI);
+        let fetchRes = await fetch(hnAPI).then(res => res.json()).then(res => res.hits[0]);     // .json() to get resolved Promise Object
+                                                                                                // hits is a property of the resolved value, not the promise itself
+        let fetchObj = {
+            created_at: fetchRes.created_at,
+            title: fetchRes.title
+        }
+        mergeRes[queryString] = fetchObj;
+    }
+    log(mergeRes);
+    res.send(mergeRes);
+})
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
