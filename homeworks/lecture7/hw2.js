@@ -19,3 +19,27 @@
  */
 
 // your code here
+const http = require("http");
+const url = require("url");
+const server = http.createServer((req, res) => {
+  if (req.method === "GET") {
+    const parsedUrl = url.parse(req.url, true);
+    if (req.url.startsWith("/api/parsetime")) {
+      const [hour, minute, second] = parsedUrl.query.iso
+        .split("T")[1]
+        .split(".")[0]
+        .split(":");
+      const time = { hour, minute, second };
+      res.writeHead(200, { contentType: "application/json" });
+      res.end(JSON.stringify(time));
+    } else if (req.url.startsWith("/api/unixtime")) {
+      const time = { unixtime: new Date(parsedUrl.query.iso).getTime() };
+      res.writeHead(200, { contentType: "application/json" });
+      res.end(JSON.stringify(time));
+    }
+  }
+});
+
+server.listen(3000, () => {
+  console.log("Server is running on port 3000");
+});
