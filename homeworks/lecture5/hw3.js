@@ -9,6 +9,7 @@ new Promise((resolve, reject) => {
   console.log('e');
   reject('f');
 }).then(result => console.log(result));
+// acedb
 
 // 2
 const fn = () =>
@@ -22,3 +23,7 @@ fn().then(res => {
 });
 
 console.log('start');
+// 1
+// start
+// success
+

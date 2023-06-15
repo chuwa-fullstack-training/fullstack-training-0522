@@ -4,11 +4,13 @@
 for (var i = 0; i < 5; i++) {
   setTimeout(() => console.log(i), 1000);
 }
+// 55555
 
 // 2
 for (let i = 0; i < 5; i++) {
   setTimeout(() => console.log(i), 1000);
 }
+// 01234
 
 // 3
 for (var i = 0; i < 5; i++) {
@@ -16,6 +18,7 @@ for (var i = 0; i < 5; i++) {
     setTimeout(() => console.log(i), 1000);
   })(i);
 }
+// 01234
 
 // 4
 let fn = () => {
@@ -25,6 +28,7 @@ setTimeout(fn, 1000);
 fn = () => {
   console.log('I am another fn');
 }
+// I am another fn
 
 // 5
 let obj = {
@@ -32,3 +36,4 @@ let obj = {
 }
 setTimeout(() => console.log(obj), 1000);
 obj.name = 'another obj';
+// {name: 'another obj'}

@@ -12,6 +12,7 @@ Promise.resolve(1)
   .then(res => {
     console.log(res);
   });
+// 1 2
 
 // // 2
 Promise.reject(1)
@@ -26,6 +27,7 @@ Promise.reject(1)
   .then(res => {
     console.log(res);
   });
+// 1 3
 
 //3
 function runAsync(x) {
@@ -45,3 +47,6 @@ function runReject(x) {
 Promise.all([runAsync(1), runReject(4), runAsync(3), runReject(2)])
   .then(res => console.log(res))
   .catch(err => console.log(err));
+
+// The order of rejections in the Promise.all() array should be 'Error: 2' followed by 'Error: 4'
+// output Error: 2
