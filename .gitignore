@@ -1,7 +1,12 @@
 .DS_Store
+*.drawio
+*/**/node_modules
 
 Full Stack Training.mindnode
 images/
 pre_slides/
+books/
+.idea/
+.env
 
 marp-diagrams/
