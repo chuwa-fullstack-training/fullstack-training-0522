@@ -5,5 +5,5 @@ Follow tutorials to learn about HTML and CSS
 
 ---
 
-- [CSS - W3schools](https://www.w3schools.com/css/) Half
+- [CSS - W3schools](https://www.w3schools.com/css/) Done
 - [CSS - web.dev](https://web.dev/learn/css/) TBD

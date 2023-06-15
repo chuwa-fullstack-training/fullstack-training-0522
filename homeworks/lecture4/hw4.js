@@ -12,4 +12,15 @@
  */
 const intersection = (nums1, nums2) => {
   // Your solution here
+  const result = [];
+  for (let i = 0; i < nums1.length; i++) {
+    const currentElement = nums1[i];
+    if (nums2.includes(currentElement)) {
+      result.push(currentElement);
+    }
+  }
+  return result;
 };
+
+console.log(intersection([1, 2, 2, 1], [2, 2]));
+console.log(intersection([4, 9, 5], [9, 4, 9, 8, 4]));
