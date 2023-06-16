@@ -14,24 +14,24 @@ type Person = User | Admin;
 
 const persons: Person[] = [
   {
-    name: "Aaron",
+    name: 'Aaron',
     age: 99,
-    occupation: "TypeScript Developer",
-  },
+    occupation: 'TypeScript Developer',
+  } as User,
   {
-    name: "Alex",
+    name: 'Alex',
     age: 98,
-    role: "System Administrator",
+    role: 'System Administrator',
   },
 ];
 
 // fix the error showing in the following code:
 function logPerson(person: Person) {
   let additionalInformation: string;
-  if (person.role) {
-    additionalInformation = person.role;
+  if ((person as Admin).role) {
+    additionalInformation = (person as Admin).role;
   } else {
-    additionalInformation = person.occupation;
+    additionalInformation = (person as User).occupation;
   }
   console.log(` - ${person.name}, ${person.age}, ${additionalInformation}`);
 }
