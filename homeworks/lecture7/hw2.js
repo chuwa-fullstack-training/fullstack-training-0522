@@ -19,3 +19,45 @@
  */
 
 // your code here
+
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
+const url_ = require('url');
+
+const server = http.createServer((req, res) => {
+  const { url, method } = req;
+  if (method === 'GET') {
+    if (url === '/') {
+      res.end('this is the home page');
+    } else if (url.startsWith('/api/parsetime')) {
+      res.writeHead(200, { contentType: 'application/json' });
+      let urlObject = url_.parse(url, true);
+      const date = new Date(urlObject.query.iso);
+      let result = {
+        hour: date.getUTCHours(),
+        minute: date.getMinutes(),
+        second: date.getSeconds(),
+      };
+      console.log(result);
+      res.end();
+    } else if (url.startsWith('/api/unixtime')) {
+      res.writeHead(200, { contentType: 'application/json' });
+      let urlObject = url_.parse(url, true);
+      const date = new Date(urlObject.query.iso);
+      let result = {
+        unixtime: date.getTime(),
+      };
+      console.log(result);
+      res.end();
+    } else {
+      res.end('this is the 404 page');
+    }
+  } else {
+    res.end('Unsupported method');
+  }
+});
+
+server.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
