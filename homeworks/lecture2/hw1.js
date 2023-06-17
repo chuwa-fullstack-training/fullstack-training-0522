@@ -4,12 +4,7 @@
 * This function does not handle getters and setters or copy attributes.
 */
 function extend(o, p) {
-  for (const prop in p) {
-    if (p.hasOwnProperty(prop)) {
-      o[prop] = p[prop];
-    }
-  }
-  return o;
+    // implement your code here
 }
 
 /*
