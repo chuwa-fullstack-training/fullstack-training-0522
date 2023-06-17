@@ -1,0 +1,33 @@
+doctype html 
+html(lang="en")
+      head
+            meta(charset="UTF-8")
+            meta(name="viewport" content="width=device-width, initial-scale=1.0")
+            style 
+                  include ../public/style.css
+            title Todo List 
+      body
+            div.container.width-600
+                  div.row
+                        div.col
+                              h1 Todo List
+                  div.row
+                        div.col-8
+                              input(name="todo" id="todo" class="form-control" placeholder="Enter todo")
+                              button(class="btn btn-primary" onclick="handleSubmit()") Add Todo
+                  div.margin-top-20
+                        each todo in todos
+                              div.row
+                                    div.col-1
+                                          input(
+                                                type="checkbox"
+                                                name=todo.todo
+                                                onchange="handleCheck(this)"
+                                                id=todo.todo
+                                                checked=todo.done
+                                                data-id=todo._id
+                                                class="form-check-input"
+                                          )
+                                          label(for=todo.todo) #{todo.todo}
+            script
+                  include ../public/main.js
