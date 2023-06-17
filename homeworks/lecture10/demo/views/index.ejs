@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>To Do List</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script src="main.js"></script>
+    <h1>To Do List</h1>
+    <div class="input-container">
+      <input type="text" id="add-todo" placeholder="Enter todo" />
+      <button onclick="handleSubmit()">Add</button>
+    </div>
+    <ul>
+      <% todos.forEach(function(todo) { %>
+      <li>
+        <div class="left">
+          <input
+            type="checkbox"
+            id="<%= todo.id %>"
+            data-id="<%= todo.id %>"
+            name="<%= todo.name %>"
+            onclick="handleCheck(this)"
+            <% if (todo.done) { %>checked<% } %> />
+          <label for="<%= todo.name %>"><%= todo.name %></label>
+        </div>
+        <div class="right">
+          <button data-id="<%= todo.id %>" onclick="handleRemove(this)">x</button>
+        </div>
+      </li>
+      <% }); %>
+    </ul>
+  </body>
+</html>
