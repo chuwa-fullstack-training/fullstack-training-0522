@@ -4,4 +4,7 @@
  */
 function sum() {
     // implement here
+  return function (a,b) {
+      return a + b; 
+    };
 }

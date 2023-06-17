@@ -12,4 +12,16 @@
  */
 const intersection = (nums1, nums2) => {
   // Your solution here
+  const s1 = new Set(nums1);
+  const s2 = new Set(nums2);
+  
+  const result = [];
+
+  for (const num of s1) {
+    if (s2.has(num)) {
+      result.push(num);
+    }
+  }
+
+  return result;
 };

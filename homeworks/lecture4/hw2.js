@@ -15,3 +15,20 @@
  * const arr = [[0, 1], [2, 3], [4, [5, 6]]];
  * Expected output: [0, 1, 2, 3, 4, 5, 6]
  */
+
+
+function doubleNumbers(numbers) {
+  return numbers.map((num) => num * 2);
+}
+
+function filterEvenNumbers(numbers) {
+  return numbers.filter((num) => num % 2 === 0);
+}
+
+function reverseString(str) {
+  return str.split('').reverse().join('');
+}
+
+function flattenArray(arr) {
+  return arr.reduce((result, current) => result.concat(flattenArray(current), []));
+}

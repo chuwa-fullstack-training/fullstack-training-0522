@@ -8,3 +8,16 @@
  */
 
 // your code here
+
+var SingletonES5 = (function () {
+    var instance;
+    function Singleton() {
+        if (instance) {
+            return instance;
+        }
+        instance = this;
+  }
+
+    return Singleton;
+})();
+

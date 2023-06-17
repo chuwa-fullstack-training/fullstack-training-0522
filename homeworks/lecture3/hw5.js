@@ -13,4 +13,14 @@
  */
 function User() {
     // implement here
+  let password = undefined;
+
+  function setPassword(newPassword) {
+    password = newPassword;
+  }
+
+  function checkPassword(input) {
+    return password === input;
+  }
+
 }

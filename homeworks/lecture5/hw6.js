@@ -10,15 +10,20 @@ function sequencePromise(urls) {
     return getJSON(url).then(response => results.push(response));
   }
   // implement your code here
-}
+  const arrResponse = urls.reduce((promise, url) => {
+    return promise.then(() => fetchOne(url));
+  }, Promise.resolve());
 
-function getJSON(url) {
-  // this is from hw5
+  return arrResponse.then(() => results);
 }
 
 // function getJSON(url) {
-//     return fetch(url).then(res => res.json());
+//   // this is from hw5
 // }
+
+function getJSON(url) {
+    return fetch(url).then(res => res.json());
+}
 
 // test your code
 const urls = [
@@ -26,3 +31,7 @@ const urls = [
   'https://api.github.com/search/repositories?q=react',
   'https://api.github.com/search/repositories?q=nodejs'
 ];
+
+sequencePromise(urls)
+  .then(responses => console.log(responses))
+  .catch(err => console.log(err));
