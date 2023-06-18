@@ -2,6 +2,7 @@ interface User {
   name: string;
   age: number;
   occupation: string;
+  role: string; // add role property
 }
 
 interface Admin {
@@ -26,6 +27,7 @@ const persons: Person[] = [
 ];
 
 // fix the error showing in the following code:
+// reason: role is not defined in person 
 function logPerson(person: Person) {
   let additionalInformation: string;
   if (person.role) {

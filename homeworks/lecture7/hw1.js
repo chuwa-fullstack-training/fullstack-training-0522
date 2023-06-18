@@ -13,3 +13,24 @@
  */
 
 // your code here
+
+const fs = require('fs');
+const path = require('path');
+
+function filterByExtension(dirPath, ext) {
+  fs.readdir(dirPath, (error, files) => {
+    if (error) {
+      console.log(error);
+      return;
+    }
+    
+    const filtered = files.filter(file => path.extname(file) === `.${ext}`);
+    filtered.forEach(file => console.log(file));
+  });
+}
+
+// Extract command-line arguments
+const directory = process.argv[2];
+const extension = process.argv[3];
+
+filterByExtension(dirPath, ext);

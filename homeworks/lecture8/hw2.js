@@ -42,3 +42,36 @@
  *  }
  * }
  */
+
+const express = require('express');
+const axios = require('axios');
+
+const app = express();
+
+app.get('/hw2', async (req, res) => {
+  const { query1, query2 } = req.query;
+
+  try {
+    const response1 = await axios.get(
+      `https://hn.algolia.com/api/v1/search?query=${query1}&tags=story`
+    );
+    const response2 = await axios.get(
+      `https://hn.algolia.com/api/v1/search?query=${query2}&tags=story`
+    );
+
+    const result = {
+      [query1]: response1.data.hits[0],
+      [query2]: response2.data.hits[0]
+    };
+
+    res.json(result);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.listen(3000, () => {
+  console.log('Server listening on port 3000');
+});
+
