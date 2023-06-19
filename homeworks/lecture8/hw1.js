@@ -8,9 +8,12 @@
  */
 
 const express = require('express');
-const router = express.router();
+const app = express();
 const port = 3000;
-router.get('/hw1/:dir/:ext', (req, res) => {
+
+const router1 = express.Router();
+const router2 = express.Router();
+router1.get('/:dir/:ext', (req, res) => {
   const dir = req.params.dir;
   const extension = req.params.ext;
 
@@ -26,10 +29,10 @@ router.get('/hw1/:dir/:ext', (req, res) => {
   });
 });
 
-router.get('/hw2/api/parsetime', (req, res) => {
+router2.get('/api/parsetime', (req, res) => {
   const iso = req.query.iso;
   const date = new Date(iso);
-  let result = {
+  const result = {
     hour: date.getUTCHours(),
     minute: date.getMinutes(),
     second: date.getSeconds(),
@@ -37,15 +40,19 @@ router.get('/hw2/api/parsetime', (req, res) => {
   res.json(result);
 });
 
-router.get('/hw2/api/unixtime', (req, res) => {
+router2.get('/api/unixtime', (req, res) => {
   const iso = req.query.iso;
   const date = new Date(iso);
-  let result = {
+  const result = {
     unixtime: date.getTime(),
   };
   res.json(result);
 });
 
-router.listen(port, () =>
-  console.log(`Example app listening on port ${port}!`)
-);
+app.use('/hw1', router1);
+app.use('/hw2', router2);
+
+app.listen(port, function (err) {
+  if (err) console.log(err);
+  console.log('Server listening on PORT', port);
+});
