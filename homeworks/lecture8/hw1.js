@@ -12,11 +12,12 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const router = express.Router();
+const router1 = express.Router();
+const router2 = express.Router();
 const fs = require("fs");
 
 
-app.get('/hw1/:dir/:ext', (req, res) => {//:getvalue to this var name
+router1.get('/hw1/:dir/:ext', (req, res) => {//:getvalue to this var name
     //when use: req.params.name
     let result = [];
     fs.readdir(req.params.dir, "utf8", (error, files) => {
@@ -44,8 +45,9 @@ app.get('/hw1/:dir/:ext', (req, res) => {//:getvalue to this var name
     })
     
 });
+app.use('/', router1);
 
-app.get('/hw2/api/:method', (req, res) => {
+router2.get('/hw2/api/:method', (req, res) => {
     let result;
     let query = req.query
     console.log(query);//{ iso: '2023-05-22T12:34:56.789Z' }
@@ -67,7 +69,8 @@ app.get('/hw2/api/:method', (req, res) => {
     
     res.send(result);
 });
-  
+app.use('/', router2);  
+
 app.listen(3000, () => {
     console.log('App listening on port 3000!');
 });
