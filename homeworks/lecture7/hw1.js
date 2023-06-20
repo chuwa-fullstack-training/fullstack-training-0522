@@ -27,8 +27,6 @@ function filterFilesByExtension(directory, extension) {
     filteredFiles.forEach(file => console.log(file));
   });
 }
-
-// Check if directory and extension arguments are provided
 if (process.argv.length < 4) {
   console.log('Usage: node program.js <directory> <extension>');
 } else {
