@@ -11,46 +11,67 @@
  */
 const http = require('http');
 const fs = require('fs');
-const path = require('path');
+const url = require('url');
+const querystring = require('querystring');
 
 const server = http.createServer((req, res) => {
-  const { url, method } = req;
-  if (method === 'GET') {
-    if (url === '/') {
-      res.end('this is the home page');
-    } else if (url === '/about') {
-      res.end('this is the about page');
-    } else if (url.startsWith('/home.html')) {
-      fs.readFile(path.join(__dirname, 'home.html'), (err, html) => {
-        if (err) {
-          res.end('error');
-        } else {
-          res.writeHead(200, { 'Content-Type': 'text/html' });
-          res.write(html);
-          res.end();
-        }
-      });
-    } else {
-      res.end('this is the 404 page');
-    }
-  } else if (method === 'POST') {
-    if (url === '/create-post') {
-      let body = [];
-      req.on('data', (chunk) => {
-        body.push(chunk);
-      });
-      req.on('end', () => {
-        const parsedBody = Buffer.concat(body).toString();
-        res.end(parsedBody);
-      });
-    } else {
-      res.end('this is the 404 page');
-    }
+  const parsedUrl = url.parse(req.url, true);
+  const pathname = parsedUrl.pathname;
+  const query = parsedUrl.query;
+
+  if (req.method === 'GET' && pathname === '/') {
+    // Serve the home.html page
+    fs.readFile('home.html', 'utf8', (err, data) => {
+      if (err) {
+        res.writeHead(500, { 'Content-Type': 'text/plain' });
+        res.end('Internal Server Error');
+      } else {
+        // Write the HTML content
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(data);
+      }
+    });
+  } else if (req.method === 'POST' && pathname === '/create-post') {
+    // Handle form submission
+    let body = [];
+
+    req.on('data', (chunk) => {
+      body.push(chunk);
+    });
+
+    req.on('end', () => {
+      // Redirect to home.html with the query string
+      const parseString = Buffer.concat(body).toString();
+      res.statusCode = 302;
+      res.setHeader('Location', `/home.html?${parseString}`);
+
+      res.end();
+    });
+  } else if (pathname === '/home.html') {
+    // Serve the home.html page with the submitted data
+    fs.readFile('home.html', 'utf8', (err, data) => {
+      if (err) {
+        res.writeHead(500, { 'Content-Type': 'text/plain' });
+        res.end('Internal Server Error');
+      } else {
+        // Append the query string to the HTML content
+        const queryString = querystring.stringify(query);
+        const htmlContent = data.replace(
+          '</body>',
+          `<p>Submitted Data: ${queryString}</p></body>`
+        );
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(htmlContent);
+      }
+    });
   } else {
-    res.end('Unsupported method');
+    res.writeHead(404, { 'Content-Type': 'text/plain' });
+    res.end('Not Found');
   }
 });
 
-server.listen(3000, () => {
-  console.log('Server is running on port 3000');
+const port = 3000;
+server.listen(port, (err) => {
+  if (err) console.log(err);
+  console.log(`Server running on port ${port}`);
 });
