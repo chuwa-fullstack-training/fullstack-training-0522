@@ -7,7 +7,6 @@
 function debounce(func, delay) {
   // your code here
   let timerId;
-
   return function (...args) {
     clearTimeout(timerId);
     timerId = setTimeout(() => {
@@ -24,10 +23,8 @@ function throttle(func, delay) {
   // your code here
   let timerId;
   let lastExecTime = 0;
-
   return function (...args) {
     const currentTime = Date.now();
-
     if (currentTime - lastExecTime >= delay) {
       func.apply(this, args);
       lastExecTime = currentTime;

@@ -13,6 +13,7 @@ Promise.resolve(1)
     console.log(res);
   });
 // 1 2
+// pass 1 as resolve so first console.log(res); than return 2 and pass it to the next then and print it
 
 // // 2
 Promise.reject(1)
@@ -28,6 +29,7 @@ Promise.reject(1)
     console.log(res);
   });
 // 1 3
+// pass 1 as reject so first console.log(res); than return 3 and pass it to the next then and print it
 
 //3
 function runAsync(x) {

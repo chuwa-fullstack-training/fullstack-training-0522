@@ -23,35 +23,32 @@ const http = require('http');
 const url = require('url');
 
 const server = http.createServer((req, res) => {
-  const parsedUrl = url.parse(req.url, true);
-  const iso = parsedUrl.query.iso;
+  const { pathname, query } = url.parse(req.url, true);
+  const iso = query.iso;
 
-  if (parsedUrl.pathname === '/api/parsetime') {
+  if (pathname === '/api/parsetime') {
     const date = new Date(iso);
-    const responseJson = {
+    const response = {
       hour: date.getHours(),
       minute: date.getMinutes(),
       second: date.getSeconds()
     };
-    sendJsonResponse(res, responseJson);
-  } else if (parsedUrl.pathname === '/api/unixtime') {
-    const unixTime = new Date(iso).getTime();
-    const responseJson = {
-      unixtime: unixTime
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(response));
+  } else if (pathname === '/api/unixtime') {
+    const unixtime = new Date(iso).getTime();
+    const response = {
+      unixtime: unixtime
     };
-    sendJsonResponse(res, responseJson);
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(response));
   } else {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
     res.end('Not Found');
   }
 });
 
-function sendJsonResponse(res, jsonData) {
-  res.writeHead(200, { 'Content-Type': 'application/json' });
-  res.end(JSON.stringify(jsonData));
-}
-
 const port = 3000;
 server.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`Server listening on port ${port}`);
 });

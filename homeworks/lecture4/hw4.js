@@ -12,14 +12,13 @@
  */
 const intersection = (nums1, nums2) => {
   // Your solution here
-  const result = [];
-  for (let i = 0; i < nums1.length; i++) {
-    const currentElement = nums1[i];
-    if (nums2.includes(currentElement)) {
-      result.push(currentElement);
+  const res = []
+  for (i of nums1) {
+    if (nums2.includes(i)) {
+      res.push(i)
     }
   }
-  return result;
+  return res
 };
 
 console.log(intersection([1, 2, 2, 1], [2, 2]));

@@ -10,6 +10,7 @@ new Promise((resolve, reject) => {
   reject('f');
 }).then(result => console.log(result));
 // acedb
+// a and c will print first and then the promise will be resolved and print e and d, then the setTimeout will be executed and print b
 
 // 2
 const fn = () =>
@@ -26,4 +27,5 @@ console.log('start');
 // 1
 // start
 // success
+// 1 will be printed first because it been defined first, then start will be printed, then the promise will be resolved and print success
 

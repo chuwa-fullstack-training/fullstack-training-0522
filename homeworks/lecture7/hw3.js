@@ -11,58 +11,57 @@
  */
 
 const http = require('http');
-const fs = require('fs');
 const url = require('url');
-const querystring = require('querystring');
+const fs = require('fs');
 
 const server = http.createServer((req, res) => {
-  const parsedUrl = url.parse(req.url, true);
-  const pathname = parsedUrl.pathname;
-  const query = parsedUrl.query;
+  const { pathname, query } = url.parse(req.url, true);
 
-  if (req.method === 'GET' && pathname === '/') {
-    fs.readFile('home.html', 'utf8', (err, data) => {
-      if (err) {
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end('Internal Server Error');
-      } else {
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.end(data);
-      }
-    });
-  } else if (req.method === 'POST' && pathname === '/submit') {
-    let body = '';
+  if (req.method === 'GET') {
+    if (pathname === '/') {
+      fs.readFile('home.html', 'utf8', (err, data) => {
+        if (err) {
+          res.writeHead(500, { 'Content-Type': 'text/plain' });
+          res.end('Internal Server Error');
+        } else {
+          const queryData = Object.entries(query).map(([key, value]) => `${key}=${value}`).join('&');
+          const updatedData = data.replace('__QUERY_DATA__', queryData);
 
-    req.on('data', chunk => {
-      body += chunk;
-    });
+          res.writeHead(200, { 'Content-Type': 'text/html' });
+          res.end(updatedData);
+        }
+      });
+    } else {
+      res.writeHead(404, { 'Content-Type': 'text/plain' });
+      res.end('Not Found');
+    }
+  } else if (req.method === 'POST') {
+    if (pathname === '/submit') {
+      let body = '';
+      
+      req.on('data', chunk => {
+        body += chunk;
+      });
 
-    req.on('end', () => {
-      const formData = querystring.parse(body);
-      const queryString = querystring.stringify(formData);
-      res.statusCode = 302;
-      res.setHeader('Location', `/home.html?${queryString}`);
-      res.end();
-    });
-  } else if (pathname === '/home.html') {
-    fs.readFile('home.html', 'utf8', (err, data) => {
-      if (err) {
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end('Internal Server Error');
-      } else {
-        const queryString = querystring.stringify(query);
-        const modifiedData = data.replace('</body>', `<p>Submitted Data: ${queryString}</p></body>`);
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.end(modifiedData);
-      }
-    });
+      req.on('end', () => {
+        const submittedData = new URLSearchParams(body).toString();
+        const redirectUrl = `/home.html?${submittedData}`;
+
+        res.statusCode = 302;
+        res.setHeader('Location', redirectUrl);
+        res.end();
+      });
+    } else {
+      res.writeHead(404, { 'Content-Type': 'text/plain' });
+      res.end('Not Found');
+    }
   } else {
-    res.writeHead(404, { 'Content-Type': 'text/plain' });
-    res.end('Not Found');
+    res.writeHead(405, { 'Content-Type': 'text/plain' });
+    res.end('Method Not Allowed');
   }
 });
 
 const port = 3000;
 server.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`Server listening on port ${port}`);
 });
