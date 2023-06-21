@@ -1,0 +1,96 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Style the header */
+.header {
+  background-color: #f1f1f1;
+  margin: 10px;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+}
+
+/* Style the nav bar */
+.nav {
+  background-color: #f1f1f1;
+  padding: 15px;
+  margin: 10px;
+  text-align: center;
+  font-size: 35px;
+}
+
+/* Container for flexboxes */
+.row {
+  display: -webkit-flex;
+  display: flex;
+}
+
+/* Create three unequal columns that sits next to each other */
+.column {
+  background-color: #f1f1f1;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Left and right column */
+.column.side {
+   -webkit-flex: 1;
+   -ms-flex: 1;
+   flex: 1;
+   margin: 10px;
+   text-align: center;
+}
+
+/* Middle column */
+.column.middle {
+  background-color: #f1f1f1;
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  margin: 10px;
+  text-align: center;
+}
+
+/* Style the footer */
+.footer {
+  background-color: #f1f1f1;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
