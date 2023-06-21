@@ -27,6 +27,7 @@ User.findByIdAndDelete(ID)
 //     mongoose.disconnect();
 //   });
 
+// deletecount 0/1
 // User.deleteOne({ firstName: 'Aaron' })
 //   .then((res) => {
 //     console.log('User deleted', res);

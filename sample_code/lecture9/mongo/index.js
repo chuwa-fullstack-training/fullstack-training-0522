@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-const User = require('./user-schema');
-const Post = require('./post-schema');
+const { User, Post } = require('./schema');
 
 mongoose
   .connect(process.env.MONGODB_URI, {
@@ -19,23 +18,23 @@ mongoose
 /**
  * Create a new user
  */
-const user = new User({
-  firstName: 'Aaron',
-  lastName: 'Zhang',
-  email: 'test@gmail.com'
-});
+// const user = new User({
+//   firstName: 'Aaron',
+//   lastName: 'Zhang',
+//   email: 'test@gmail.com'
+// });
 
-user
-  .save()
-  .then(() => {
-    console.log('User saved');
-  })
-  .catch(err => {
-    console.log('Error saving user', err);
-  })
-  .finally(() => {
-    mongoose.connection.close();
-  });
+// user
+//   .save()
+//   .then(() => {
+//     console.log('User saved');
+//   })
+//   .catch(err => {
+//     console.log('Error saving user', err);
+//   })
+//   .finally(() => {
+//     mongoose.connection.close();
+//   });
 
 /**
  * Find a user
@@ -44,20 +43,20 @@ user
 /**
  * Create a new post
  */
-const post = new Post({
-  title: 'My first post',
-  content: 'This is my first post',
-  authorId: user._id
-});
+// const post = new Post({
+//   title: 'My first post',
+//   content: 'This is my first post',
+//   authorId: user._id
+// });
 
-post
-  .save()
-  .then(() => {
-    console.log('Post saved');
-  })
-  .catch(err => {
-    console.log('Error saving post', err);
-  })
-  .finally(() => {
-    mongoose.connection.close();
-  });
+// post 
+//   .save()
+//   .then(() => {
+//     console.log('Post saved');
+//   })
+//   .catch(err => {
+//     console.log('Error saving post', err);
+//   })
+//   .finally(() => {
+//     mongoose.connection.close();
+//   });
