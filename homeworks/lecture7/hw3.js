@@ -9,45 +9,54 @@
  * 3. you need to figure out how to parse the query string in the home.html page
  * 4. after writing the html content, you need to write the query string in the html as well
  */
-
 const http = require("http");
 const fs = require("fs");
+const URL = require("url");
+const querystring = require("querystring");
 const path = require("path");
 
 const server = http.createServer((req, res) => {
-  const { url, method } = req;
-  if (method === "GET") {
-    if (url === "/") {
+  const parsedURL = URL.parse(req.url, true); // returns a URL object
+  // console.log(parsedURL);
+  const pathname = parsedURL.pathname; // e.g: `/home.html`, `/about`, `/`
+  const queryObj = parsedURL.query; // e.g:{name: 'John', age: '20'}
+
+  if (req.method === "GET") {
+    if (pathname === "/") {
       res.end("this is the home page");
-    } else if (url === "/about") {
+    } else if (pathname === "/about") {
       res.end("this is the about page");
-    } else if (url.startsWith("/home.html")) {
-      fs.readFile(path.join(__dirname, "home.html"), (err, html) => {
+      // render home.html page with the query data, if there is any
+    } else if (pathname === "/home.html") {
+      // with out `utf8`, we cannot use `html.replace`
+      fs.readFile(path.join(__dirname, "home.html"), "utf8", (err, html) => {
         if (err) {
-          res.end("error");
+          res.end("Error");
         } else {
+          const queryString = querystring.stringify(queryObj);
+          const updatedHTML = html.replace(
+            "</body>",
+            `<p>Submitted Data: ${queryString}</p></body>`
+          );
+          // write html
           res.writeHead(200, { "Content-Type": "text/html" });
-          res.write(html);
-          res.end();
+          res.end(updatedHTML);
         }
       });
-    } else {
-      res.end("this is the 404 page");
     }
-    // POST  home.html: we work on this part
-  } else if (method === "POST") {
-    if (url === "/create-post") {
+  } else if (req.method === "POST") {
+    if (pathname === "/create-post") {
       let body = [];
       req.on("data", (chunk) => {
         body.push(chunk);
       });
 
       req.on("end", () => {
+        // Redirect to home.html with the query string
         const parsedBody = Buffer.concat(body).toString();
         res.statusCode = 302;
-        res.setHeader("Location", "/home.html?name=John&age=20");
-        fs.readFile(path.join(__dirname, "home.html"));
-        res.end(parsedBody);
+        res.setHeader("Location", `/home.html?${parsedBody}`);
+        res.end();
       });
     } else {
       res.end("this is the 404 page");
