@@ -12,4 +12,15 @@
  *  - process.argv[2] is the first command-line argument
  */
 
-// your code here
+const fs = require('fs');
+const path = require('path');
+
+function hw1() {
+    fs.readdir(process.argv[2], (err, files) => {
+        if (err) console.log(err);
+        else console.log(files.filter(file => path.extname(file) === process.argv[3]))
+    });
+}
+
+hw1();
+//node hw1.js . .js

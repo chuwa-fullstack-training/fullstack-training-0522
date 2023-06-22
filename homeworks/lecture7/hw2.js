@@ -19,3 +19,26 @@
  */
 
 // your code here
+
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+    const { url, method } = req;
+    if (method === 'GET') {
+        let urlObj = new URL(url, 'http://localhost');
+        if (urlObj.pathname === '/api/parsetime') {
+            let date = new Date(urlObj.searchParams.get('iso'));
+            res.writeHead(200, { contentType: 'application/json' });
+            res.end(JSON.stringify({ hour: date.getUTCHours(), minuite: date.getUTCMinutes(), second: date.getUTCSeconds() }));
+        } else if (urlObj.pathname === '/api/unixtime') {
+            res.writeHead(200, { contentType: 'application/json' });
+            res.end(JSON.stringify({ unixtime: Date.parse(urlObj.searchParams.get('iso')) }));
+        } else {
+            //404
+        }
+    }
+});
+
+server.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});

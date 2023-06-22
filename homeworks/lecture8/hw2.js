@@ -42,3 +42,18 @@
  *  }
  * }
  */
+const express = require('express');
+const router = express.Router();
+
+router.get('/hw2', (req, res) => {
+    let promise1 = fetch(`https://hn.algolia.com/api/v1/search?query=${req.query.query1}&tags=story`).then(res => res.json());
+    let promise2 = fetch(`https://hn.algolia.com/api/v1/search?query=${req.query.query2}&tags=story`).then(res => res.json());
+    Promise.all([promise1, promise2]).then(results => {
+        let response = {};
+        response[req.query.query1] = results[0];
+        response[req.query.query2] = results[1];
+        res.send(response);
+    }).catch(err => console.log(err));
+});
+
+module.exports = router;
