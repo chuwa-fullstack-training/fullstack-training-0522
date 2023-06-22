@@ -10,7 +10,7 @@ function sequencePromise(urls) {
     return getJSON(url).then(response => results.push(response));
   }
   // implement your code here
-}
+}                
 
 function getJSON(url) {
   // this is from hw5
