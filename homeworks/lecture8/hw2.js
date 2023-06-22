@@ -42,3 +42,30 @@
  *  }
  * }
  */
+const express = require('express');
+const axios = require('axios');
+
+const app = express();
+
+app.get('/hw2', async (req, res) => {
+  const { query1, query2 } = req.query;
+
+  try {
+    const result1 = await axios.get(`https://hn.algolia.com/api/v1/search?query=${query1}&tags=story`);
+    const result2 = await axios.get(`https://hn.algolia.com/api/v1/search?query=${query2}&tags=story`);
+
+    const combinedResult = {
+      [query1]: result1.data.hits[0],
+      [query2]: result2.data.hits[0],
+    };
+
+    res.json(combinedResult);
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred' });
+  }
+});
+
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});

@@ -13,3 +13,28 @@
  */
 
 // your code here
+const fs = require('fs');
+const path = require('path');
+
+function filterFilesByExtension(directory, extension) {
+  fs.readdir(directory, (err, files) => {
+    if (err) {
+      console.error(`Error reading directory: ${err}`);
+      return;
+    }
+
+    const filteredFiles = files.filter(file => path.extname(file) === `.${extension}`);
+    filteredFiles.forEach(file => console.log(file));
+  });
+}
+
+// Usage: node fileFilter.js directory extension
+const directory = process.argv[2];
+const extension = process.argv[3];
+
+if (!directory || !extension) {
+  console.error('Please provide both directory and extension arguments.');
+  return;
+}
+
+filterFilesByExtension(directory, extension);

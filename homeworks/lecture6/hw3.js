@@ -6,6 +6,15 @@
  */
 function debounce(func, delay) {
   // your code here
+  let timerId;
+  
+  return function(...args) {
+    clearTimeout(timerId);
+    
+    timerId = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
 }
 
 /**
@@ -14,4 +23,17 @@ function debounce(func, delay) {
  */
 function throttle(func, delay) {
   // your code here
+  let isThrottled = false;
+  
+  return function(...args) {
+    if (!isThrottled) {
+      isThrottled = true;
+      
+      func.apply(this, args);
+      
+      setTimeout(() => {
+        isThrottled = false;
+      }, delay);
+    }
+  };
 }

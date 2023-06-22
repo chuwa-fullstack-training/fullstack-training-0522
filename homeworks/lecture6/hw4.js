@@ -6,4 +6,12 @@
  */
 function format(num) {
   // your code here
+  const parts = num.toString().split('.');
+  const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+  if (parts.length === 2) {
+    return `${integerPart}.${parts[1]}`;
+  }
+
+  return integerPart;
 }
