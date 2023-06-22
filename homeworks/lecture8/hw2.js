@@ -42,3 +42,38 @@
  *  }
  * }
  */
+const axios = require('axios');
+
+const express = require('express');
+
+
+const app = express();
+
+app.get('/hw2', async (req, res) => {
+  let query1 = req.query.query1;
+  let query2 = req.query.query2;
+  console.log("query1: ", query1);
+  console.log("query2: ", query2);
+
+  const response1 = await axios.get(`http://hn.algolia.com/api/v1/search?query=${query1}&tags=story`)
+  const response2 = await axios.get(`http://hn.algolia.com/api/v1/search?query=${query2}&tags=story`)
+
+  let allresult = {};
+  const result1 = {
+    created_at: response1.data.hits[0]['created_at'],
+    title: response1.data.hits[0]['title']
+  }
+  const result2 = {
+    created_at: response2.data.hits[0]['created_at'],
+    title: response2.data.hits[0]['title']
+  }
+  
+  allresult[query1] = result1
+  allresult[query2] = result2
+  res.json(allresult);
+
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});

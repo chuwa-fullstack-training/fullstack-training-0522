@@ -35,3 +35,6 @@ fs.readdir(dir, function(err, files) {
     }
   });
 });
+
+// terminal code is: node hw1.js . js;
+// . means the current code, js means extension needs to be js

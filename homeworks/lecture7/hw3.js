@@ -9,3 +9,63 @@
  * 3. you need to figure out how to parse the query string in the home.html page
  * 4. after writing the html content, you need to write the query string in the html as well
  */
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
+const URL = require('url');
+
+
+const server = http.createServer((req, res) => {
+  const { url, method } = req;
+  if (method === 'GET') {
+    if (url === '/') {
+      res.end('this is the home page');
+    } else if (url === '/about') {
+      res.end('this is the about page');
+    } else if (url.startsWith('/home.html')) {
+      fs.readFile(path.join(__dirname, 'home.html'), (err, html) => {
+        if (err) {
+          res.end('error');
+        } else {
+          let newURL = URL.parse(req.url, true);
+          console.log("url is: ", newURL);
+          
+          let title = newURL.query.title;
+          let content = newURL.query.content;
+          console.log("title is: ", title);
+          console.log("content is: ", content);
+          let newhtml = html.toString().replace('<div class="output"></div>', `<p>title: ${title}</p>
+              <p>content: ${content}</p>`);
+
+          res.writeHead(200, { 'Content-Type': 'text/html' });
+          res.write(newhtml);
+          res.end();
+        }
+      });
+    } else {
+      res.end('this is the 404 page');
+    }
+  } else if (method === 'POST') {
+    if (url === '/create-post') {
+      let body = [];
+      req.on('data', chunk => {
+        body.push(chunk);
+      });
+      req.on('end', () => {
+        const parsedBody = Buffer.concat(body).toString();
+        let queryString = "home.html?" + parsedBody;
+        res.writeHead(302, {Location: queryString});
+        res.end();
+        // res.end(parsedBody);
+      });
+    } else {
+      res.end('this is the 404 page');
+    }
+  } else {
+    res.end('Unsupported method');
+  }
+});
+
+server.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
