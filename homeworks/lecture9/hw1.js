@@ -3,10 +3,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
+// mongodb+srv://jing_wang:12345@cluster0.wxtrb5b.mongodb.net/?retryWrites=true&w=majority
 // connect to MongoDB
 mongoose
   .connect(
-    "mongodb+srv://training:shangan@fullstack-training.gw3nkbl.mongodb.net/<database>",
+    "mongodb+srv://jing_wang:12345@cluster0.wxtrb5b.mongodb.net/?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
