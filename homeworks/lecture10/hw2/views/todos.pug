@@ -1,0 +1,40 @@
+// todos.pug
+doctype html
+html
+  head
+    title Todo List
+  body
+    h1 Todo List
+
+    each todo in todos
+      div
+        h3= todo.title
+        p= todo.description
+        p Completed: #{todo.completed}
+
+    // Add new todo form
+    h2 Add New Todo
+    form(action="/todos" method="POST")
+      label(for="title") Title:
+      input(type="text" id="title" name="title" required)
+      br
+
+      label(for="description") Description:
+      textarea(id="description" name="description" required)
+      br
+
+      label(for="completed") Completed:
+      input(type="checkbox" id="completed" name="completed")
+      br
+
+      input(type="submit" value="Add Todo")
+
+    // Delete todo form
+    if todos.length > 0
+      h2 Delete Todo
+      form(action="/todos/:id" method="DELETE")
+        select(name="id" required)
+          each todo in todos
+            option(value=todo._id)= todo.title
+
+        input(type="submit" value="Delete Todo")
