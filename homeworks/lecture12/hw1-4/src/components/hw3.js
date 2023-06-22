@@ -13,7 +13,7 @@ class Hw3 extends React.Component {
 
   render() {
     return (
-      <div className="hw 3">
+      <div className="hw3">
         <h2 style={{ border: "none", borderTop: "dotted red 3px", paddingTop: "1rem"}}>Homework3</h2>
         <div className="button-list">
           <button onClick={(e) => this.handleAdd(e)} value="1" >1</button>
