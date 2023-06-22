@@ -1,0 +1,20 @@
+const mongoose = require('mongoose');
+
+const connectDB = async () => {
+  try {
+    await mongoose.connect(
+      'mongodb+srv://training:shangan@fullstack-training.gw3nkbl.mongodb.net/<database>',
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    );
+    console.log('Connected to MongoDB');
+  } catch (err) {
+    console.error(err.message);
+    // Exit process with failure
+    process.exit(1);
+  }
+};
+
+module.exports = connectDB;

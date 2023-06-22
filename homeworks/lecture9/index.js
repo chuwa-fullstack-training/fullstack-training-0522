@@ -71,7 +71,7 @@ app.post('/employees', async (req, res) => {
 // Get a company by id
 app.get('/companies/:id', async (req, res) => {
   try {
-    const company = await Company.findOne(req.params?.id);
+    const company = await Company.findById(req.params?.id);
     if (!company) {
       return res.status(404).json({ error: 'Company not found' });
     }
@@ -84,7 +84,7 @@ app.get('/companies/:id', async (req, res) => {
 // Get an employee by id
 app.get('/employees/:id', async (req, res) => {
   try {
-    const employee = await Employee.findOne(req.params?.id);
+    const employee = await Employee.findById(req.params?.id);
     if (!employee) {
       return res.status(404).json({ error: 'employee not found' });
     }
@@ -133,7 +133,7 @@ app.put('/employees/:id', async (req, res) => {
 // Delete a company by id
 app.delete('/companies/:id', async (req, res) => {
   try {
-    await Company.deleteOne(req.params?.id);
+    await Company.findByIdAndDelete(req.params?.id);
     res.status(204).send();
   } catch {
     res.status(404).json({ error: 'Failed to delete company' });
@@ -143,7 +143,7 @@ app.delete('/companies/:id', async (req, res) => {
 // Delete an employee by id
 app.delete('/employees/:id', async (req, res) => {
   try {
-    await Employee.deleteOne(req.params?.id);
+    await Employee.findByIdAndDelete(req.params?.id);
     res.status(204).send();
   } catch {
     res.status(404).json({ error: 'Failed to delete employee' });
