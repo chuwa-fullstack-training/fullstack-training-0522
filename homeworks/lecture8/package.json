@@ -1,0 +1,19 @@
+{
+  "name": "lecture8",
+  "version": "1.0.0",
+  "description": "",
+  "main": "hw1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./hw1.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.1"
+  }
+}
