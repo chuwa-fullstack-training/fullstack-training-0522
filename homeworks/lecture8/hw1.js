@@ -16,7 +16,7 @@ const path = require("path");
 
 const app = express();
 
-// make routers
+// create routers
 const router1 = express.Router();
 const router2 = express.Router();
 
@@ -25,7 +25,7 @@ const router2 = express.Router();
 router1.get("/hw1/:dir/:txt", (req, res) => {
   const dir = req.params?.dir;
   const extension = req.params?.ext;
-
+  console.log(dir, extension``);
   fs.readdir(dir, (err, files) => {
     if (err) {
       res.status(500).send("Unexpected error happened.");
@@ -34,7 +34,7 @@ router1.get("/hw1/:dir/:txt", (req, res) => {
       const filteredFiles = files.filter(
         (file) => path.extname(file) === `${extension}`
       );
-      res.send(JSON.stringify(allFiles));
+      res.send(JSON.stringify(filteredFiles));
     }
   });
 });
@@ -62,8 +62,8 @@ router2.get("/api/unixtime", (req, res) => {
 });
 
 // use routers
-app.use(router1);
-app.use(router2);
+app.use("/hw1", router1);
+app.use("/hw2", router2);
 
 // start server
 app.listen(3000, (err) => {
