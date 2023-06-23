@@ -1,4 +1,8 @@
 const express = require('express');
+const connectDB = require('./db');
+const Todo = require('./schema');
+
+connectDB();
 
 const app = express();
 
@@ -9,27 +13,42 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'pug');
 app.set('views', './views');
 
-const todos = [
-  { id: 1, todo: 'first thing', done: true },
-  { id: 2, todo: 'second thing', done: false },
-  { id: 3, todo: 'third thing', done: false }
-];
-
-app.get('/', (req, res) => {
-  res.render('index', { todos });
+app.get('/', async (req, res) => {
+  try {
+    const todos = await Todo.find();
+    res.render('index', { todos });
+  } catch (err) {
+    console.log(err);
+    res.status(500);
+  }
 });
 
-app.post('/api/todos', (req, res) => {
-  const todo = req.body.todo;
-  todos.push({ id: todos.length + 1, todo, done: false });
-  res.json(todos);
+app.post('/api/todos', async (req, res) => {
+  try {
+    const todo = new Todo(req.body);
+    await todo.save();
+    res.json(todo);
+  } catch (err) {
+    console.log(err);
+    res.status(500);
+  }
 });
 
-app.put('/api/todos/:id', (req, res) => {
-  const id = parseInt(req.params.id, 10);
-  const todo = todos.find(t => t.id === id);
-  todo.done = !todo.done;
-  res.json(todo);
+app.put('/api/todos/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const todo = await Todo.findById(id);
+    if (todo) {
+      todo.done = !todo.done;
+      await todo.save();
+      res.json(todo);
+    } else {
+      res.status(404);
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500);
+  }
 });
 
 app.listen(3000, () => {
