@@ -83,6 +83,7 @@ router.get('/hw2', async (req, res) => {
     }
 
     console.log(result);
+    res.send(result);
 })
 
 app.use('/', router);
