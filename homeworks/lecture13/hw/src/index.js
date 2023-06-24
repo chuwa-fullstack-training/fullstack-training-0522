@@ -10,7 +10,7 @@ import Hw2 from './Hw2';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Hw1 />
+    <Hw2 />
   </React.StrictMode>
 );
 

@@ -1,0 +1,25 @@
+.Hw1 {
+      font-family: sans-serif;
+      padding: 20px;
+}
+
+#TodoDetail {
+      width: 400px;
+}
+
+.Container1 {
+      width: 400px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+}
+
+.Container2 {
+      width: 400px;
+      align-items: center;
+}
+
+.Todo {
+      border: 1px solid #ccc;
+      padding: 10px;
+}
