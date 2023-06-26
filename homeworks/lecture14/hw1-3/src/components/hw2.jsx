@@ -1,76 +1,7 @@
 import React from "react";
 import Card from "./card";
-
-const colorNames = [
-  "AliceBlue",
-  "AntiqueWhite",
-  "Aqua",
-  "Aquamarine",
-  "Azure",
-  "Beige",
-  "Bisque",
-  "Black",
-  "BlanchedAlmond",
-  "Blue",
-  "BlueViolet",
-  "Brown",
-  "BurlyWood",
-  "CadetBlue",
-  "Chartreuse",
-  "Chocolate",
-  "Coral",
-  "CornflowerBlue",
-  "Cornsilk",
-  "Crimson",
-  "Cyan",
-  "DarkBlue",
-  "DarkCyan",
-  "DarkGoldenRod",
-  "DarkGray",
-  "DarkGreen",
-  "DarkKhaki",
-  "DarkMagenta",
-  "DarkOliveGreen",
-  "DarkOrange",
-  "DarkOrchid",
-  "DarkRed",
-  "DarkSalmon",
-  "DarkSeaGreen",
-  "DarkSlateBlue",
-  "DarkSlateGray",
-  "DarkTurquoise",
-  "DarkViolet",
-  "DeepPink",
-  "DeepSkyBlue",
-  "DimGray",
-  "DodgerBlue",
-  "FireBrick",
-  "FloralWhite",
-  "ForestGreen",
-  "Fuchsia",
-  "Gainsboro",
-  "GhostWhite",
-  "Gold",
-  "GoldenRod",
-  "Gray",
-  "Green",
-  "GreenYellow",
-  "HoneyDew",
-  "HotPink",
-  "IndianRed",
-  "Indigo",
-  "Ivory",
-  "Khaki",
-  "Lavender",
-  "LavenderBlush",
-  "LawnGreen",
-  "LemonChiffon",
-  "LightBlue",
-  "LightCoral",
-  "LightCyan",
-  "LightGoldenRodYellow",
-  "LightGray",
-];
+import ColorController from "./colorControl";
+import BoxController from "./boxControl";
 
 class Hw2 extends React.Component {
   state = {
@@ -119,33 +50,11 @@ class Hw2 extends React.Component {
   render() {
     return (
       <div className="hw2">
-        <select
-          className="card-selection"
-          onChange={(e) => this.handleCardSelection(e)}
-        >
-          <option value="">Select a Box</option>
-          {Object.entries(this.state.names).map(([id, name]) => {
-            console.log(666, id, name);
-            return (
-              <option key={id} value={id}>
-                {name}
-              </option>
-            );
-          })}
-        </select>
-        <select
-          className="color-selection"
-          onChange={(e) => this.handleColorSelection(e)}
-        >
-          <option value="">Select a Color</option>
-          {colorNames.map((color) => {
-            return (
-              <option key={color} value={color}>
-                {color}
-              </option>
-            );
-          })}
-        </select>
+        <BoxController
+          names={this.state.names}
+          handleCardSelection={this.handleCardSelection}
+        />
+        <ColorController handleColorSelection={this.handleColorSelection} />
         <div className="card-container">
           {Object.entries(this.state.names).map(([id, name]) => {
             return (
