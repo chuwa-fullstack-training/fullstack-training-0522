@@ -11,7 +11,7 @@ import Hw3 from './Hw3';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Hw2 />
+    <Hw3 />
   </React.StrictMode>
 );
 
