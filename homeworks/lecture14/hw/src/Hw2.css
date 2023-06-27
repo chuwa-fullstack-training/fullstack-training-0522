@@ -1,0 +1,34 @@
+.Hw2 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+}
+
+.controllers {
+      display: flex;
+}
+
+.controller {
+      flex: 1;
+      margin: 10px;
+}
+
+.components {
+      width: 60%;
+      height: 400px;
+      padding: 20px;
+      text-align: center;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+}
+
+.component {
+      /* width: 400px; */
+      height: 200px;
+      border: solid 1px gray;
+      border-radius: 20px;
+}

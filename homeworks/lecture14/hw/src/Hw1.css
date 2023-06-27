@@ -1,0 +1,55 @@
+.Hw1 {
+      display: flex;
+}
+
+.users,
+.profileSection {
+      width: 50%;
+      flex: 1;
+}
+
+table {
+      width: 100%;
+}
+
+table,
+th,
+td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      text-align: center;
+      margin: 0;
+}
+
+th,
+td:nth-child(1) {
+      background-color: #989393;
+}
+
+.userAvatar {
+      width: 20px;
+      height: 20px;
+}
+
+.profile {
+      width: 500px;
+      height: 500px;
+      border: 1px solid gray;
+      border-radius: 2px;
+      margin: 20px;
+      padding: 20px;
+      margin-top: 90px;
+      overflow: auto;
+}
+
+.header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+
+.userAvatar-profile {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+}
