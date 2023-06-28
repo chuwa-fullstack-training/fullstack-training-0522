@@ -104,4 +104,17 @@ li a {
 li p {
   padding: 0 1rem;
 }
-/*------*/
+/*---hw1---*/
+/*---hw2---*/
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5%;
+  margin: 5%;
+}
+
+.card-container > * {
+  height: 20vh;
+  border: solid black 1px;
+}
+/*---hw2---*/
