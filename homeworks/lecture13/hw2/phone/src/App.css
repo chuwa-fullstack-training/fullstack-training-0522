@@ -1,0 +1,16 @@
+
+.buttonContent{
+  display: flex;
+  border: 5px black solid;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: space-between;
+  height: 300px;
+  width: 200px;
+}
+
+.buttons {
+  width: 30px;
+  margin: 10px;
+}
