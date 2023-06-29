@@ -18,7 +18,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>count: {this.state.count}</h1>
-        <button onClick={this.handleClick}>Click Me</button>
+        <button onClick={this.handleClick.bind(this)}>Click Me</button>
       </div>
     );
   }
