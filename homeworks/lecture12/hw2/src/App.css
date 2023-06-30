@@ -1,0 +1,30 @@
+.header,
+.nav,
+.footer {
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  background-color: #a8d1e0;
+  font-size: 20px;
+}
+
+/* flexbox container */
+.container {
+  display: flex;
+}
+
+.aside {
+  flex: 1;
+  text-align: center;
+  margin: 10px;
+  background-color: #a8d1e0;
+  font-size: 20px;
+}
+
+.section {
+  flex: 2;
+  text-align: center;
+  margin: 10px;
+  background-color: #a8d1e0;
+  font-size: 20px;
+}
