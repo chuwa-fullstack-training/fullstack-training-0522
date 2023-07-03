@@ -1,0 +1,38 @@
+.phone-screen {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: rgb(79, 139, 195);
+  padding: 10px;
+}
+
+.status-bar {
+  width: 100%;
+  color: white;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.button {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.button button {
+  background-color: white;
+  color: black;
+  font-size: 18px;
+  border: none;
+  margin: 5px;
+  flex: 1 1 20%; /* flex-grow | flex-shrink | flex-basis */
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.button button:hover {
+  background-color: lightgray;
+}
