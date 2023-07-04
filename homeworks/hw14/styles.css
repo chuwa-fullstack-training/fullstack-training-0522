@@ -1,0 +1,79 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+  .row {
+    margin: 10px 0;
+    display: flex;
+  }
+  
+  .row label {
+    flex-basis: 80px;
+  }
+  
+
+  .span-spacing {
+    margin-right: 40px; /* Adjust the value as needed */
+    margin-bottom: 30px;
+  }
+
+  .span-spacing1 {
+    margin-right: 100px; /* Adjust the value as needed */
+
+  }
+
+  .profile{
+    border: 1px solid black;
+    float: right;
+    width: 50%;
+    height: 100%;
+  }
+
+
+  .App {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+p{
+    text-align: center;
+    font-size: 50px;
+}
+
+input[type="text"] {
+    display: block; 
+    margin:auto;
+    height: 60px;
+    width:500px;
+}
+
+input[type="checkbox"] { 
+    position: absolute;
+    left: 38%;
+    padding: 15px 15px;
+    color: white;
+}
+
+#clear{
+    right:40%;
+    padding: 10px 10px;
+    height: 70px;
+    width: 300px;
+}
+
+
+.grid-container {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+  }
+  
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+  }
