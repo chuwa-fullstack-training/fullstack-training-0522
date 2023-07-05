@@ -3,10 +3,10 @@
 script.js:
 document.addEventListener("DOMContentLoaded", function(event) {
     var items = document.querySelectorAll(' .item');
-    for (var i = 0; 1 < items.length; i++ {
+    for (var i = 0; i < items.length; i++) {             
     var element = items[i];
     element.addEventListener('click', function() {
-      console.log('You clicked on button # + i);
+      console.log('You clicked on button #' + i);
     });
 });
 
@@ -16,7 +16,7 @@ index.html:
 <head>
   <meta charset=utf-8>
   <title>Test</title>
-  <script sro="script.is"></script>
+  <script src="script.js"></script>
 </head>
 <body>
   <button class="item">A</button>
@@ -28,3 +28,8 @@ index.html:
 </html>
 
 What happens when you click on the 3rd item?
+
+always log 'You clicked on button #5'
+
+
+// closure -> let i = 0

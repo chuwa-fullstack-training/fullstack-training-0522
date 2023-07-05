@@ -1,0 +1,42 @@
+.container {
+    display: grid;
+    grid-template-rows: 15% 10% 55% 15%;
+    grid-template-columns: 30% 70%;
+    grid-template-areas:
+      "header header"
+      "nav nav"
+      "aside section"
+      "footer footer";
+    gap: 10px;
+    height: 100vh;
+  }
+  
+  .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 1.5em;
+  }
+  
+  header {
+    grid-area: header;
+  }
+  
+  nav {
+    grid-area: nav;
+  }
+  
+  aside {
+    grid-area: aside;
+  }
+  
+  section {
+    grid-area: section;
+  }
+  
+  footer {
+    grid-area: footer;
+  }
+  

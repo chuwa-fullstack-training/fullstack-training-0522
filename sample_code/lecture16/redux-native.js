@@ -4,6 +4,8 @@ const initialState = {
   count: 0
 };
 
+// counterRefucer.js
+// action is an object that describes what happened
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'INCREMENT':
@@ -32,5 +34,14 @@ store.subscribe(() => {
   console.log(store.getState());
 });
 
+// (action.js)
+// action creator 
+const increment = () => ({
+  type: 'INCREMENT'
+ });
+
+// dispatch can take an action object or an action creator
+store.dispatch(increment());
 store.dispatch({ type: 'INCREMENT' });
+
 // store.dispatch({ type: 'ADD_TODO', text: 'drink water' });
