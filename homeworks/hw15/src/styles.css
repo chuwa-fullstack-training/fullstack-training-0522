@@ -1,0 +1,48 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+  .images {
+    height: 1600px;
+    position: relative;
+  }
+  
+  .images .second {
+    position: absolute;
+    bottom: 0;
+    display: block;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+    position: sticky;
+    top: 10px;
+    z-index: 2;
+  }
+  
+  * {
+    font-family: "IBM Plex Mono";
+  }
+  
+  h1 {
+    text-align: center;
+  }
+
+  .block {
+    margin:auto;
+    width: 60%;
+
+  }
+
+  Link{
+    margin:auto
+  }
+
+  .loginform{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+  }
