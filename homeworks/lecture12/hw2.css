@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.header,
+.nav,
+.footer {
+  height: 50px;
+  background: lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main {
+  display: flex;
+  gap: 10px;
+}
+
+.aside,
+.section {
+  flex: 1;
+  height: 200px;
+  background: lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aside {
+  flex: 0 0 100px; /* If you want a fixed width for aside */
+}
