@@ -1,0 +1,91 @@
+root {
+  font-size: 16px;
+}
+
+.selection {
+  border: solid black 1px;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.selection > * {
+  padding: 0.5rem 1rem;
+  background: yellowgreen;
+  border-radius: 0.2rem;
+}
+
+.selection > *:hover {
+  background: rgb(143, 203, 22);
+}
+
+.hw1,
+.operations-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+h1 {
+  text-align: center;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  background-color: rgb(252, 165, 24);
+}
+
+button:hover {
+  background-color: rgb(255, 157, 0);
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+}
+
+.input-container button {
+  padding: 0.5rem 1rem;
+}
+
+.input-container input {
+  padding: 0.5rem 1rem;
+  width: 40vw;
+  margin: 0 1rem;
+}
+
+.operations-container .row > * {
+  margin: 0 1rem;
+}
+
+.operations-container button {
+  width: fit-content;
+  padding: 0.5rem 1rem;
+}
+
+.list-container {
+  width: 100%;
+}
+
+.todo-list {
+  width: 80%;
+  border-top: dashed 1px rgba(0, 0, 0, 0.219);
+  margin-top: 1rem;
+}
+
+ul {
+  list-style: none;
+  min-width: 300px;
+  width: 30vw;
+}
+
+.todo-list,
+ul {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
