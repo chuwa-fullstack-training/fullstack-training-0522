@@ -1,0 +1,20 @@
+.App {
+  text-align: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+}
+
+.login-form >button {
+  width: 100px;
+}
+
+.avatar {
+  height: 50px;
+  width: 50px;
+}
+

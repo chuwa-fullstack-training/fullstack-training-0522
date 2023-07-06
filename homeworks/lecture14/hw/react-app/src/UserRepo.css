@@ -1,0 +1,34 @@
+.App {
+  /* text-align: center; */
+  display: flex;
+}
+
+.avatar {
+  height: 50px;
+  width: 50px;
+}
+
+.content{
+  margin-left: 100px;
+  margin-top: 100px;
+  display: flex;
+  border: 2px black solid;
+  height: 500px;
+  width: 600px;
+}
+
+.content-avatar{
+  margin-top: 100px;
+  margin-left:100px;
+  /* border: 2px black solid; */
+}
+.content-avatar img{
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+.content-info {
+  margin-top: 80px;
+  margin-left: 50px;
+}

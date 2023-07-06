@@ -1,0 +1,22 @@
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  border: 1px black solid;
+  margin: 10px；
+}
+
+.navbar {
+  display: flex;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  justify-content: space-around;  
+}
+
+.componentsContent{
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-around; 
+}
