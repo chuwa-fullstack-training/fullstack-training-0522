@@ -16,7 +16,7 @@ class HW3 extends React.Component{
 
         const horizontal = {
             display :"flex",
-            flexDirection :'"row"',
+            flexDirection :"row",
         };
         const buttonStyle = {
             margin : "2px",
