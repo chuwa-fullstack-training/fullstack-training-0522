@@ -20,6 +20,9 @@ class HW4 extends React.Component{
             else if(lastNum == 3) output = num + "rd";
             else output = num + "th";
         }
+        else{
+            output = num;
+        }
         //console.log("input: "+ num+" output: "+output);
         this.setState({inputValue: num, outputValue : output});
     }
