@@ -1,3 +1,8 @@
+codesandbox url:\
+https://codesandbox.io/s/hw1-cln4ws\
+username: admin\
+password: admin
+
 Refactor lecture 14 homework 1 to use React Router
 
 ![screenshot](./hw1.gif)
