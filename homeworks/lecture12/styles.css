@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+  }
+  
+  .App {
+    font-family: sans-serif;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  aside {
+    /* height: 50rem; */
+    width: 25%;
+    float: left;
+    background-color: azure;
+  }
+  
+  main {
+    flex: 1;
+  }
+  
+  button {
+    width: 5rem;
+    float: left;
+  }
+  
