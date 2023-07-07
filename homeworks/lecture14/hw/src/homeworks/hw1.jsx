@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./hw1.css";
 
 function UsersList({ onSelect }) {
   const [users, setUsers] = useState([]);
@@ -60,7 +61,7 @@ function UserProfile({ username }) {
         <img src={user.avatar_url} alt={user.login} width="150" />
       </div>
       <div>
-        <h1>{user.name}</h1>
+        <h2>{user.name}</h2>
         <h3>Location: {user.location}</h3>
         <h3>Repositories</h3>
         <ul>
@@ -73,13 +74,14 @@ function UserProfile({ username }) {
   );
 }
 
-export default function App() {
-  const [selectedUser, setSelectedUser] = useState("");
+export default function Hw1() {
+  const [selectedUser, setSelectedUser] = useState();
 
   return (
-    <div class="app">
+    <div class="hw1">
       <UsersList onSelect={setSelectedUser} />
       <UserProfile username={selectedUser} />
     </div>
   );
 }
+

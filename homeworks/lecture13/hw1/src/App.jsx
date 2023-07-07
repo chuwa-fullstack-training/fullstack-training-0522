@@ -1,68 +1,108 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import './App.css'
+import './App.css';
 
-function TodoList() {
-  const [todos, setTodos] = useState([]);
-  const [input, setInput] = useState("");
-
-  const addTodo = () => {
-    if (input.trim() !== "") {
-      setTodos([
-        ...todos, 
-        { id: todos.length, title: input, completed: false }
-      ]);
-      setInput("");
-    }
+class TodoList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      todos: [],
+      input: ""
+    };
   }
 
-  const toggleTodo = (id) => {
+  addTodo = () => {
+    const { todos, input } = this.state;
+    if (input.trim() !== "") {
+      const newTodo = { id: todos.length, title: input, completed: false };
+      this.setState({
+        todos: [...todos, newTodo],
+        input: ""
+      });
+    }
+  };
+
+  toggleTodo = (id) => {
+    const { todos } = this.state;
     const updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
         return { ...todo, completed: !todo.completed };
       }
       return todo;
     });
-    setTodos(updatedTodos);
-  }
+    this.setState({
+      todos: updatedTodos
+    });
+  };
 
-  const markAllCompleted = () => {
-    const updatedTodos = todos.map((todo) => ({ ...todo, completed: true }))
-    setTodos(updatedTodos)
-  }
+  markAllCompleted = () => {
+    const { todos } = this.state;
+    const updatedTodos = todos.map((todo) => ({
+      ...todo,
+      completed: true
+    }));
+    this.setState({
+      todos: updatedTodos
+    });
+  };
 
-  const clearCompleted = () => {
+  clearCompleted = () => {
+    const { todos } = this.state;
     const updatedTodos = todos.filter((todo) => !todo.completed);
-    setTodos(updatedTodos);
-  }  
+    this.setState({
+      todos: updatedTodos
+    });
+  };
 
-  const activeTodosCounts = todos.filter((todo) => !todo.completed).length
+  getActiveTodosCount = () => {
+    const { todos } = this.state;
+    return todos.filter((todo) => !todo.completed).length;
+  };
 
-  return (
-    <>
-      <h1>Todo List</h1>
+  handleInputChange = (e) => {
+    this.setState({
+      input: e.target.value
+    });
+  };
 
-      <div>
-        <input type='text' value={input} onChange={(e) => setInput(e.target.value)} />
-        <button onClick={addTodo}>Add Todo</button>
-      </div>
+  render() {
+    const { todos, input } = this.state;
+    const activeTodosCount = this.getActiveTodosCount();
 
-      <div>
-        <p>{activeTodosCounts} remaining</p>
-        <button onClick={clearCompleted}>Clear Completed Todos</button>
-      </div>
-      <div>
-        <button onClick={markAllCompleted}>Mark All Done</button>
-      </div>
-      <div>
-        <ul>
-          {todos.map((todo) => (
-            <li key={todo.id} style={{ textDecoration: todo.completed ? "line-through" : "none" }} onClick={() => toggleTodo(todo.id)}>{todo.title}</li>
-          ))}
-        </ul>
-      </div>
-    </>
-  )
+    return (
+      <>
+        <h1>Todo List</h1>
+
+        <div>
+          <input type='text' value={input} onChange={this.handleInputChange} />
+          <button onClick={this.addTodo}>Add Todo</button>
+        </div>
+
+        <div>
+          <p>{activeTodosCount} remaining</p>
+          <button onClick={this.clearCompleted}>Clear Completed Todos</button>
+        </div>
+        <div>
+          <button onClick={this.markAllCompleted}>Mark All Done</button>
+        </div>
+        <div>
+          <ul>
+            {todos.map((todo) => (
+              <li
+                key={todo.id}
+                style={{
+                  textDecoration: todo.completed ? "line-through" : "none"
+                }}
+                onClick={() => this.toggleTodo(todo.id)}
+              >
+                {todo.title}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </>
+    );
+  }
 }
 
 export default TodoList;
