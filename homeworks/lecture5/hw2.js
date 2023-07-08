@@ -8,39 +8,30 @@
  * @param {string[]} str
  */
 function reverseWords(str) {
-  // your code here
-  // Reverse the entire string
-  reverseString(str, 0, str.length - 1);
+    // your code here
+    let wordArray = [];
+    let temp = "";
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] !== " ") {
+            temp = temp.concat(str[i]);
 
-  let start = 0; // Start index of a word
-  let end = 0; // End index of a word
-
-  // Reverse individual words
-  while (end < str.length) {
-    if (str[end] === ' ') {
-      reverseString(str, start, end - 1);
-      start = end + 1;
+            if (i === str.length - 1) {
+                wordArray.unshift(temp);
+                temp = "";
+            }
+        } else {
+            wordArray.unshift(temp);
+            temp = "";
+        }
     }
-    end++;
-  }
 
-  // Reverse the last word (if any)
-  reverseString(str, start, end - 1);
+    let newStr = wordArray.reduce((acc, cur) => {
+        return acc.concat(" ", cur);
+    }, "");
 
-  // Join the reversed characters to form the resulting string
-  return str.join('');
+    return newStr.trim();
 }
 
-function reverseString(str, left, right) {
-  while (left < right) {
-    const temp = str[left];
-    str[left] = str[right];
-    str[right] = temp;
-    left++;
-    right--;
-  }
-}
-
-const input = 'the sky is blue'.split(''); // ['t', 'h', 'e', ' ', 's', 'k', 'y', ' ', 'i', 's', ' ', 'b', 'l', 'u', 'e']
-// test
-console.log(reverseWords(input)); // 'blue is sky the'
+const input = "the sky is blue".split(""); // ['t', 'h', 'e', ' ', 's', 'k', 'y', ' ', 'i', 's', ' ', 'b', 'l', 'u', 'e']
+reverseWords(input);
+console.log(reverseWords(input));

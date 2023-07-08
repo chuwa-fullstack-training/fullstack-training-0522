@@ -56,9 +56,9 @@ fn = () => {
 }
 
 /* Output will be like this:
-I am another fn
+I am fn
 
-Initially, the variable fn is declared and assigned an arrow function that logs 'I am fn'. However, before the setTimeout function executes, the value of fn is reassigned to a new arrow function that logs 'I am another fn'. Since the reassignment happens before the setTimeout function triggers, the output reflects the updated value of fn.
+When you later reassign fn to a new arrow function, you are changing the reference stored in the fn variable to point to the new function. However, the setTimeout function already received the original reference to the first function, and it will execute that function regardless of any subsequent reassignments to the fn variable.
 */ 
 
 // 5
@@ -71,5 +71,5 @@ obj.name = 'another obj';
 /* Output will be like this:
 { name: 'another obj' }
 
-The object obj is defined with a property name set to 'obj'. After a delay of 1000 milliseconds, the console.log statement is executed. At that point, the name property of obj has been reassigned to 'another obj'. Therefore, the output shows the updated value of the obj object.
+When you update the name property of the obj object using obj.name = 'another obj', you are modifying the existing object in memory. As a result, any references to that object, including the one inside the setTimeout callback, will reflect the updated property value.
 */ 

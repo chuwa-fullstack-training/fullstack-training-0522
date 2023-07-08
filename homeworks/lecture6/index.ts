@@ -126,3 +126,19 @@ class Employee extends Person {
         this.position = position;
     }
 }
+
+// generics - reusable components
+// T is a placeholder for the type
+function getArray<T>(items: T[]): T[] {
+    return new Array().concat(items);
+}
+
+let numArray = getArray<number>([1, 2, 3, 4]);
+let strArray = getArray<string>(['brad', 'john', 'jill']);
+// number array can only accept numbers, string array can only accept strings
+
+// numArray.push('hello'); // error
+// strArray.push(1); // error
+
+
+

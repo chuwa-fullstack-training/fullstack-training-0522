@@ -12,12 +12,13 @@ function makeCustomer<T extends User>(u: T): T {
   };
 }
 
-/* The error in the code is because the makeCustomer function is defined with a generic type parameter T that extends the User type, but it is returning an object literal that only includes the id property and hardcodes the type property to "customer". This violates the constraint imposed by the generic type parameter. */
+/* The code will result in an error because the function makeCustomer is trying to return an object that extends the type T, which is a generic type that extends User. However, the returned object is not guaranteed to have the same shape as T.
 
-// To fix the code: change the T of the reutrn type to User
-function makeCustomer<T extends User>(u: T): User {
+To fix the code: explicitly define the return type of the makeCustomer function to ensure it matches the input type T. In the modified code, the spread operator (...u) is used to copy all the properties of the input object u. This ensures that the returned object will have the same properties as u and also includes the updated type property. Now the code will compile without any errors. */
+
+function makeCustomer<T extends User>(u: T): T {
   return {
-    id: u.id,
+    ...u, // Spread the properties of 'u'
     type: "customer",
   };
 }
@@ -46,4 +47,9 @@ function f(a: string | number, b: string | number) {
     return a + b;
   }
 }
+
+console.log(f("hello", "world")); // hello : world
+console.log(f(1, 2)); // 3
+
+
 

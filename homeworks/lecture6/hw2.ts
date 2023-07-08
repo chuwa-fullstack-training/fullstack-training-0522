@@ -38,19 +38,18 @@ function logPerson(person: Person) {
 
 persons.forEach(logPerson);
 
-/* The error in the code occurs because the property role is only defined in the Admin interface, not in the User interface. Therefore, when accessing person.role in the logPerson function, TypeScript raises an error because it cannot guarantee that the person object will have the role property.
+/* The error in the code is occurring because the Person type is a union type of User and Admin, and not all objects of the Person type have both the role and occupation properties.
 
-To fix the error, you can use type guards to narrow down the type of the person object and perform conditional checks. In this case, you can use the in operator to check if the role property exists in the person object. */
+To fix the error, you can use type assertions to narrow down the type of the person parameter inside the logPerson function.*/
 
 function logPerson(person: Person) {
   let additionalInformation: string;
-  if ('role' in person) {
-    additionalInformation = person.role;
+  if ((person as Admin).role) {
+    additionalInformation = (person as Admin).role;
   } else {
-    additionalInformation = person.occupation;
+    additionalInformation = (person as User).occupation;
   }
   console.log(` - ${person.name}, ${person.age}, ${additionalInformation}`);
 }
 
 persons.forEach(logPerson);
-
