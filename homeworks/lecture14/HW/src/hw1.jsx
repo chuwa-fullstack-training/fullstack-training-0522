@@ -92,25 +92,6 @@ function HW1(){
 
     
 }
-// function getRepo({user}){
-        
-//     const [repo, setRepo] = useState(null);
 
-//     useEffect(() => {
-//         const fetchData = async () => {
-//             try{
-//                 const response = await axios.get(user.repos_url);
-//                 setRepo(response.data);
-//                 console.log("this is repo")
-//                 console.log(repo);
-//             }
-//             catch(err){
-//                 console.log('Error:', err);
-//             }
-//         }
-
-//         fetchData();
-//     }, [user.repos_url]);
-// }
 
 export default HW1;

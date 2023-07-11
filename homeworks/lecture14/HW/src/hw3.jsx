@@ -114,7 +114,7 @@ function HW3 (){
                     return (
                         <li key = {index} style= {list} >
                             <label key = {index}>
-                                <input type = "checkbox" checked = {markall} key = {index} onClick={(e) => handleMark(e)}></input>
+                                <input type = "checkbox" checked = {markall} key = {index} onChan={(e) => handleMark(e)}></input>
                                 {item}
                             </label>
                         </li>
