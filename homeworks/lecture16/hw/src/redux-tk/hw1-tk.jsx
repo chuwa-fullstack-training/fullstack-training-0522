@@ -2,66 +2,71 @@ import React, { useState } from 'react';
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 import { useSelector, useDispatch, Provider } from 'react-redux';
 
-const todolist = createSlice(initialState, {
+export const todoList = createSlice({
     name:'todoList',
-    initialState:[],
+    initialState: [],
     reducers:{
-         
-    }
-})
- const store = configureStore ({reducer: todolist.reducer});
+         addTodo: (state, action) => {
+            state.push({text: action.payload, selected: false});
+         },
+        
+        // removeTodoById : (state , action )=>{
+        //     return [...state].filter((item)=> item._
+        // }
+         selectTodo: (state, action) => {
+            state[action.payload].selected = !state[action.payload].selected;
+         },
 
- function HW1tk () {
+         markAll: (state, action) => {
+            state.map((item, index) => {item.selected = true});
+         },
+
+         clearAll: (state, action) => {
+            state.map((item, index) => {item.selected = false});
+         }
+    }
+});
+export const {addTodo, selectTodo, markAll, clearAll} = todoList.actions;// add const
+
+const store = configureStore ({reducer: todoList.reducer});
+
+function HW1tk () {
+    const todolist = useSelector(state => state);//why use state=>state.todoList will return undefined not []?
+    const dispatch = useDispatch();
+    console.log(todolist);
 
 
     const handleKeyDown = (e) => {
         if(e.key === "Enter"){
-            console.log("new input entered" + e.target.value);
-            let arr = [...todolist];
-            arr.push(""+e.target.value);
-            // this.setState({todolist: arr});
-            setTodolist(arr);
-            e.target.value = "";
+            console.log("new input entered");
+            dispatch(addTodo(e.target.value));
+            e.target.value = "";  
         }
-            
+         
     }
 
     const handleButtonClick = (e) => {
-        // this.setState({markall : false});
-        // this.setState({selected : []});
-        setMarkall(false);
-        setSelected([]);
-        console.log("clear all clicked" + e.target.value);
+        console.log("clearAll");
+        dispatch(clearAll());
     }
 
     const handleMarkAll = (e) => {
         if(e.target.checked){
-            // this.setState({markall : true});
-            // this.setState({selected : this.state.todolist});
-            setMarkall(true);
-            setSelected(todolist);
-            console.log("mark all clicked" + e.target.value);
+            console.log("markAll");
+           dispatch(markAll());
         }
         
     }
 
-    const handleMark = (e) => {
-        if(e.target.checked){
-            // console.log(e.target.id);
-            let arr = [...selected];
-            arr.push(e.target.id);
-            // this.setState({selected: arr});
-            setSelected(arr);
-            console.log(selected);
-        }
-        else{
-            let arr = [...selected];
-            arr.pop();
-            // this.setState({selected: arr});
-            setSelected(arr);
-            console.log(selected);
-        }
-        //// console.log(e.target.checked)
+    const handleMark = (index) => {
+        // if(e.target.checked){
+            
+        // }
+        // else{
+           
+        // }
+        console.log(index);//e.target.key is undefined
+        dispatch(selectTodo(index));
     }
 
     const horizontal = {
@@ -105,7 +110,7 @@ const todolist = createSlice(initialState, {
             </div>
 
             <div className="horizontal" style={horizontal}>
-                <p>{todolist.length - selected.length + " remaining"}</p>
+                <p>{todolist.filter(ele => ele.selected === false).length + " remaining"}</p>
                 <button onClick={(e) => handleButtonClick(e)}>Clear Completed Todos</button>
             </div>
 
@@ -117,13 +122,14 @@ const todolist = createSlice(initialState, {
             </div>
 
             <div className="todoContent" style={space}>
-                {/* {[...Array(5)].map((item, index)=>( */}
+                
                 {todolist.map((item, index) => {
                     return (
-                        <li key = {index} style= {list} >
+                        <li  key = {index} style= {list} >
                             <label key = {index}>
-                                <input type = "checkbox" checked = {markall} key = {index} onChan={(e) => handleMark(e)}></input>
-                                {item}
+                                <input type = "checkbox" checked = {item.selected} value = {item}
+                                key = {index} onClick={() => handleMark(index)}></input>
+                                {item.text}
                             </label>
                         </li>
                     );
