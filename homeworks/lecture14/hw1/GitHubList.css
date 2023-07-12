@@ -1,0 +1,69 @@
+.github-list {
+    display: flex;
+    align-items: stretch;
+  }
+  
+  .user-list {
+    flex: 1;
+    padding: 20px;
+    background-color: #f0f0f0;
+  }
+  
+  .user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .user.selected {
+    background-color: #ccc;
+  }
+  
+  .user img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .user span {
+    font-weight: bold;
+  }
+  
+  .user-profile {
+    flex: 2;
+    padding: 20px;
+    background-color: #eaeaea;
+  }
+  
+  .user-profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .user-profile h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .user-profile p {
+    margin-bottom: 10px;
+  }
+  
+  .user-profile h3 {
+    margin-bottom: 10px;
+  }
+  
+  .user-profile ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .user-profile li {
+    margin-bottom: 5px;
+  }
+  
